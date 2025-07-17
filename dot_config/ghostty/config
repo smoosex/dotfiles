@@ -1,0 +1,6 @@
+config-file = ./appearances.conf
+config-file = ./mappings.conf
+
+macos-option-as-alt = true
+
+# custom-shader = ./shaders/cursor_blaze.glsl
