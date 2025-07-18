@@ -71,8 +71,8 @@ preset = 'qwerty'
 inner.horizontal = 8
 inner.vertical = 8
 outer.left = 8
-outer.top = 8
-outer.bottom = [
+outer.bottom = 8
+outer.top = [
   { monitor.'Built-in Retina Display' = 8 },
   { monitor.U27N3R = 38 },
   38,
@@ -303,3 +303,4 @@ run = ['layout floating']
 # [[on-window-detected]]
 # if.app-id = 'com.electron.lark.helper'
 # run = 'layout floating'
+

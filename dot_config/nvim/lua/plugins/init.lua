@@ -147,10 +147,10 @@ return {
 	-- },
 
 	-- im-select
-	-- {
-	-- 	"keaising/im-select.nvim",
-	-- 	require("configs.enhancement").im_select,
-	-- },
+	{
+		"keaising/im-select.nvim",
+		require("configs.enhancement").im_select,
+	},
 
 	-- [[ #################################################################################### ]]
 

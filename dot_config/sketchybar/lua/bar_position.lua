@@ -1,3 +1,3 @@
-local bar_position = "bottom"
+local bar_position = "top"
 
 return bar_position

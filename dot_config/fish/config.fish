@@ -29,13 +29,7 @@ set -gx PATH "/opt/homebrew/sbin:$PATH"
 set -gx PATH "/opt/homebrew/bin:$PATH"
 set -gx PATH "/Users/smoose/.local/share/tmux/plugins/tmuxifier/bin" $PATH # tmuxifier plugin
 set -gx EDITOR "nvim" # default edirot
-set -gx DEEPSEEK_API_KEY "sk-7493abdd71af4b2caad5f279298d17d5"
-set -gx CHATANYWHERE_API_KEY "sk-k23TC2lJQjGFkX7EcIWWFVTGtR87r6jq6b0lfk3JHOnymxcQ"
-set -gx CLOUD_API_KEY "sk-X1bI9o3VhsGJ1JLCisAUCeCu5rtyOry5H6AH78kiRYRGyJ5T"
-set -gx GEMINI_API_KEY "AIzaSyA-0cWdHn-7s4nOwIACm1vt1Gq936hMwd4"
-set -gx V3_API_KEY "sk-3B15bEIP0X5x47KQC59dCfEd51D8461c89BfDfE38b843358"
-set -gx OPEN_ROUTER_API_KEY "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"
-set -gx OPEN_WEATHER_API_KEY "0df5875b4e7ca1e56b2efc9d649e83db"
+
 set -gx LDFLAGS "-L/opt/homebrew/lib"
 set -gx CPPFLAGS "-I/opt/homebrew/include"
 
