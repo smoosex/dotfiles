@@ -1,6 +1,3 @@
--- Thanks to original theme for existing https://github.com/sam4llis/nvim-tundra
--- this is a modified version of it
-
 local M = {}
 
 M.base_16 = {

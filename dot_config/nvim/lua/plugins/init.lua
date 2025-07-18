@@ -140,16 +140,17 @@ return {
 		require("configs.enhancement").floaterm,
 	},
 
-	{
-		"yetone/avante.nvim",
-		require("configs.ai").avante,
-	},
+  -- avante
+	-- {
+	-- 	"yetone/avante.nvim",
+	-- 	require("configs.ai").avante,
+	-- },
 
 	-- im-select
-	{
-		"keaising/im-select.nvim",
-		require("configs.enhancement").im_select,
-	},
+	-- {
+	-- 	"keaising/im-select.nvim",
+	-- 	require("configs.enhancement").im_select,
+	-- },
 
 	-- [[ #################################################################################### ]]
 

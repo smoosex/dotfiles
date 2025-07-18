@@ -40,7 +40,6 @@ set -gx LDFLAGS "-L/opt/homebrew/lib"
 set -gx CPPFLAGS "-I/opt/homebrew/include"
 
 starship init fish | source
-fetch
 eval (tmuxifier init - fish)
 
 # YAZI

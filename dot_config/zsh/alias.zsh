@@ -21,7 +21,7 @@ alias glgo="git log --oneline"
 alias gw="git switch"
 
 # chezmoi
-alias cz="chezmoi edit"
+alias cz="cd /Users/smoose/.local/share/chezmoi && nvim "
 
 # LazyGit
 alias lg="lazygit"

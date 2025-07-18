@@ -3,12 +3,12 @@ local M = {
         -- "rcarriga/nvim-dap-ui",
         -- "nvim-neotest/nvim-nio",
         -- "folke/neodev.nvim",
-        "theHamsta/nvim-dap-virtual-text",
+        -- "theHamsta/nvim-dap-virtual-text",
         "leoluz/nvim-dap-go",
     },
     config = function()
         dofile(vim.g.base46_cache .. "dap")
-        require("nvim-dap-virtual-text").setup()
+        -- require("nvim-dap-virtual-text").setup()
 
         -- Custom breakpoint icons
         vim.fn.sign_define(

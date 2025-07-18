@@ -10,13 +10,13 @@ local M = {
 					case_mode = "smart_case",
 				},
 
-				media = { backend = "ueberzug" },
+				-- media = { backend = "ueberzug" },
 			},
 		},
 
 		dependencies = {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-			"2kabhishek/nerdy.nvim",
+			-- "2kabhishek/nerdy.nvim",
 			-- "dharmx/telescope-media.nvim",
 		},
 	},

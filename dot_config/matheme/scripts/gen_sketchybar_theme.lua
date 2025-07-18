@@ -3,63 +3,31 @@ local home_dir = os.getenv("HOME") or os.getenv("USERPROFILE")
 local info = dofile(home_dir .. "/.config/matheme/themes/" .. theme_name .. ".lua")
 local base_16 = info.base_16
 
-local palette = {
-	c0 = "base00",
-	c1 = "base01",
-	c2 = "base02",
-	c3 = "base03",
-	c4 = "base04",
-	c5 = "base05",
-	c6 = "base06",
-	c7 = "base07",
-	c8 = "base08",
-	c9 = "base09",
-	c10 = "base0A",
-	c11 = "base0B",
-	c12 = "base0C",
-	c13 = "base0D",
-	c14 = "base0E",
-	c15 = "base0F",
-	bg = "base00",
-	fg = "base05",
-}
+local format = function(lines, color, name)
+	table.insert(lines, string.format("  %s = 0xff%s,", name, color:sub(2)))
+end
 
-local order = {
-	"c0",
-	"c1",
-	"c2",
-	"c3",
-	"c4",
-	"c5",
-	"c6",
-	"c7",
-	"c8",
-	"c9",
-	"c10",
-	"c11",
-	"c12",
-	"c13",
-	"c14",
-	"c15",
-	"bg",
-	"fg",
+-- stylua: ignore start
+local palette_order = {
+	"base00", "base01", "base02", "base03", "base04", "base05", "base06", "base07",
+	"base08", "base09", "base0A", "base0B", "base0C", "base0D", "base0E", "base0F"
 }
+-- stylua: ignore end
 
 local lines = {}
 
 table.insert(lines, "return {")
-for _, k in pairs(order) do
-	local v = palette[k]
-	table.insert(lines, string.format("  %s = 0xff%s,", k, base_16[v]:sub(2)))
+for i = 0, 15 do
+  format(lines, base_16[palette_order[i + 1]], "c" .. i)
 end
+format(lines, base_16["base00"], "bg")
+format(lines, base_16["base05"], "fg")
 table.insert(lines, "}")
 
 os.execute("mkdir -p /tmp/matheme")
-local fp, err = io.open("/tmp/matheme/init.lua", "w")
+local fp, err = io.open("/tmp/matheme/sketchybar_theme.lua", "w")
 if not fp then
-	error("无法打开文件写入: " .. err)
+	error("Cannot open file for writing: " .. err)
 end
 fp:write(table.concat(lines, "\n"))
 fp:close()
-
-print("已生成 inti.lua")

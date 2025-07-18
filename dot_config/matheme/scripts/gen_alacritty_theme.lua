@@ -5,8 +5,7 @@ local base_16 = info.base_16
 
 local lines = {}
 
--- 辅助函数：添加一个 section
-local function add_section(name, kvs)
+local function format(name, kvs)
 	table.insert(lines, "[" .. name .. "]")
 	for _, kv in ipairs(kvs) do
 		local field, color_key = kv[1], kv[2]
@@ -15,64 +14,54 @@ local function add_section(name, kvs)
 	table.insert(lines, "")
 end
 
--- 1. colors.primary
-add_section("colors.primary", {
+format("colors.primary", {
 	{ "background", "base00" },
 	{ "foreground", "base05" },
 	{ "dim_foreground", "base04" },
 	{ "bright_foreground", "base06" },
 })
 
--- 2. colors.cursor
-add_section("colors.cursor", {
+format("colors.cursor", {
 	{ "text", "base00" },
 	{ "cursor", "base05" },
 })
 
--- 3. colors.vi_mode_cursor
-add_section("colors.vi_mode_cursor", {
+format("colors.vi_mode_cursor", {
 	{ "text", "base00" },
 	{ "cursor", "base05" },
 })
 
--- 4. colors.search.matches
-add_section("colors.search.matches", {
+format("colors.search.matches", {
 	{ "foreground", "base00" },
 	{ "background", "base0B" },
 })
 
--- 5. colors.search.focused_match
-add_section("colors.search.focused_match", {
+format("colors.search.focused_match", {
 	{ "foreground", "base00" },
 	{ "background", "base0D" },
 })
 
--- 6. colors.footer_bar
-add_section("colors.footer_bar", {
+format("colors.footer_bar", {
 	{ "foreground", "base00" },
 	{ "background", "base0B" },
 })
 
--- 7. colors.hints.start
-add_section("colors.hints.start", {
+format("colors.hints.start", {
 	{ "foreground", "base00" },
 	{ "background", "base0A" },
 })
 
--- 8. colors.hints.end
-add_section("colors.hints.end", {
+format("colors.hints.end", {
 	{ "foreground", "base00" },
 	{ "background", "base09" },
 })
 
--- 9. colors.selection
-add_section("colors.selection", {
+format("colors.selection", {
 	{ "text", "base00" },
 	{ "background", "base05" },
 })
 
--- 10. colors.normal
-add_section("colors.normal", {
+format("colors.normal", {
 	{ "black", "base01" },
 	{ "red", "base08" },
 	{ "green", "base0B" },
@@ -83,8 +72,7 @@ add_section("colors.normal", {
 	{ "white", "base05" },
 })
 
--- 11. colors.bright
-add_section("colors.bright", {
+format("colors.bright", {
 	{ "black", "base03" },
 	{ "red", "base08" },
 	{ "green", "base0B" },
@@ -95,7 +83,7 @@ add_section("colors.bright", {
 	{ "white", "base07" },
 })
 
--- 12. 可选的 indexed_colors
+-- Optional indexed_colors
 if base_16.base0F then
 	table.insert(lines, "[[colors.indexed_colors]]")
 	table.insert(lines, "index = 16")
@@ -103,13 +91,10 @@ if base_16.base0F then
 	table.insert(lines, "")
 end
 
--- 将所有行写入 theme.toml
 os.execute("mkdir -p /tmp/matheme")
-local fp, err = io.open("/tmp/matheme/theme.toml", "w")
+local fp, err = io.open("/tmp/matheme/alacritty_theme.toml", "w")
 if not fp then
-	error("无法打开文件写入: " .. err)
+	error("Cannot open file for writing: " .. err)
 end
 fp:write(table.concat(lines, "\n"))
 fp:close()
-
-print("已生成 theme.toml")

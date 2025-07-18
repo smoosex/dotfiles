@@ -1,3 +1,5 @@
+auto-update-channel = tip
+
 config-file = ./appearances.conf
 config-file = ./mappings.conf
 
