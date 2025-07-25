@@ -1,0 +1,31 @@
+inoremap jk <Esc>
+nnoremap ; :
+
+" if &term =~# 'xterm\|screen\|tmux'
+"   " define mode-switch codes
+"   let &t_SI = "\<Esc>[6 q"
+"   let &t_SR = "\<Esc>[4 q"
+"   let &t_EI = "\<Esc>[2 q"
+"
+"   " send a block (2 q) right after startup
+"   augroup CursorShape
+"     autocmd!
+"     autocmd VimEnter,InsertLeave * silent !printf '\e[2 q'
+"     autocmd InsertEnter              * silent !printf '\e[6 q'
+"   augroup END
+" endif
+
+" only for xterm-style terminals
+if &term =~# 'xterm\|screen\|tmux'
+  " on entering Vim’s alternate screen, force block cursor
+  let &t_ti .= "\<Esc>[2 q"
+
+  " mode‐switch codes:
+  let &t_SI  = "\<Esc>[6 q"    " Insert → vertical bar
+  let &t_SR  = "\<Esc>[4 q"    " Replace → underline
+  let &t_EI  = "\<Esc>[2 q"    " Leave Insert → block
+
+  " on exiting Vim’s alternate screen, reset to bar cursor
+  let &t_te .= "\<Esc>[6 q"
+endif
+

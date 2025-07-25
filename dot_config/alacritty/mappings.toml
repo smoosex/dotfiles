@@ -1,0 +1,128 @@
+############################################ TMUX ############################################
+# Go to the N window in tmux in tmux it is Ctrl+b+number
+[[keyboard.bindings]]
+chars = "\u0002\u0032"
+key = "2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\u0031"
+key = "1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\u0032"
+key = "2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\u0033"
+key = "3"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\u0034"
+key = "4"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\u0035"
+key = "5"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\u0036"
+key = "6"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\u0037"
+key = "7"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\u0038"
+key = "8"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\u0039"
+key = "9"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\u0030"
+key = "0"
+mods = "Command"
+
+# New tmux window on Cmd+t in tmux it is Ctrl+b+c
+[[keyboard.bindings]]
+chars = "\u0002\u0063"
+key = "t"
+mods = "Command"
+
+# Close tmux pane on Cmd+w in tmux it is Ctrl+b+x (it is using a custom keybind in tmux to kill the pane)
+[[keyboard.bindings]]
+chars = "\u0002\u0078"
+key = "w"
+mods = "Command"
+
+# Go to the left tab on Cmd+[ in tmux it is Ctrl+b+p
+[[keyboard.bindings]]
+chars = "\u0002\u0070"
+key = "["
+mods = "Command"
+
+# Go to the right tab on Cmd+] in tmux it is Ctrl+b+n
+[[keyboard.bindings]]
+chars = "\u0002\u006e"
+key = "]"
+mods = "Command"
+
+# Go to the last tab on Cmd+l in tmux it is Ctrl+b+l
+[[keyboard.bindings]]
+chars = "\u0002\u006c"
+key = "l"
+mods = "Command"
+
+# Open window list panel on Cmd+` in tmux it is Ctrl+b+w
+[[keyboard.bindings]]
+chars = "\u0002\u0077"
+key = "`"
+mods = "Command"
+
+# Split Window Horizontally on Cmd+\ in tmux it is Ctrl+b+"
+[[keyboard.bindings]]
+chars = "\u0002\u0022"
+key = "\\"
+mods = "Command"
+
+# Split Window Vertically on Cmd+| in tmux it is Ctrl+b+%
+[[keyboard.bindings]]
+chars = "\u0002\u0025"
+key = "|"
+mods = "Command | Shift"
+
+# Move tmux window to left on Cmd+i in tmux it is M-i (alt+i it is a custom keybind)
+[[keyboard.bindings]]
+chars = "\u0002\u007b"
+key = "i"
+mods = "Command"
+
+# Move tmux window to right on Cmd+o in tmux it is M-o (alt+o it is a custom keybind)
+[[keyboard.bindings]]
+chars = "\u0002\u007d"
+key = "o"
+mods = "Command"
+
+# Go to copy mode on Cmd+u in tmux it is Ctrl+b+[
+[[keyboard.bindings]]
+chars = "\u0002\u005b"
+key = "u"
+mods = "Command"
+
+# Resize-pane -Z on Cmd+z in tmux it is Ctrl+b+z
+[[keyboard.bindings]]
+chars = "\u0002\u007a"
+key = "z"
+mods = "Command"

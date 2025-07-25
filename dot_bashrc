@@ -1,0 +1,16 @@
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# draw horiz line under prompt
+draw_line() {
+  local COLUMNS="$COLUMNS"
+  while ((COLUMNS-- > 0)); do
+    printf '\e[30m\u2500'
+  done
+}
+
+eval "$(starship init bash)"
+
+# fetch

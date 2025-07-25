@@ -1,0 +1,46 @@
+# if you don't use chezmoi, you should set enable to false
+[chezmoi]
+enable = true 
+
+ # if auto is true, wallpaper will be changed automatically when switching themes
+[wallpaper]
+auto = true
+
+ # theme name -> wallpaper name
+[wallpaper.wallpapers]
+default = "stairs.jpg" # if theme is not specified, default wallpaper will be used
+
+ayu_light = "beach.jpg"
+one_light = "beach.jpg"
+tundra = "mount.jpg"
+bearded-arc = "mountain.png"
+everforest = "stairs.jpg"
+gruvbox = "railtrack.jpg"
+gruvchad = "railtrack.jpg"
+
+# I use chezmoi to manage my dotfiles, if you don't use it, you should substitute the theme paths below with your own
+[alacritty]
+enable = true
+config_path = "/Users/smoose/.config/alacritty/alacritty.toml" # used to touch the file to trigger reload
+theme_path = "/Users/smoose/.local/share/chezmoi/dot_config/alacritty/theme.toml"
+
+[sketchybar]
+enable = true
+theme_path = "/Users/smoose/.local/share/chezmoi/dot_config/sketchybar/helpers/theme/palette.lua"
+
+# nvim only supports Nvchad now.
+[nvim]
+enable = true
+init_path = "/Users/smoose/.config/nvim/init.lua"
+chadrc_path = "/Users/smoose/.config/nvim/lua/chadrc.lua"
+
+[ghostty]
+enable = true
+theme_path = "/Users/smoose/.local/share/chezmoi/dot_config/ghostty/themes/matheme"
+
+[kitty]
+enable = true
+theme_path = "/Users/smoose/.local/share/chezmoi/dot_config/kitty/themes/matheme.conf"
+
+[macos_system_appearance]
+enable = true

@@ -1,0 +1,20 @@
+[".config/zsh/zsh-syntax-highlighting"]
+    type = "git-repo"
+    url = "git@github.com:zsh-users/zsh-syntax-highlighting.git"
+    refreshPeriod = "168h"
+[".config/zsh/zsh-autosuggestions"]
+    type = "git-repo"
+    url = "git@github.com:zsh-users/zsh-autosuggestions.git"
+    refreshPeriod = "168h"
+[".config/NvChad"]
+    type = "git-repo"
+    url = "git@github.com:NvChad/starter.git"
+    refreshPeriod = "168h"
+[".config/LazyVim"]
+    type = "git-repo"
+    url = "git@github.com:LazyVim/starter.git"
+    refreshPeriod = "168h"
+[".config/AstroNvim"]
+    type = "git-repo"
+    url = "git@github.com:AstroNvim/template.git"
+    refreshPeriod = "168h"

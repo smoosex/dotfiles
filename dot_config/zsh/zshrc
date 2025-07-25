@@ -1,0 +1,45 @@
+# prevent various problems related to keybindings caused by the plugin sourcing sequenc
+# completions from brew
+autoload -Uz compinit
+compinit
+
+# yazi shell wrapper
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+source ~/.config/zsh/env_keys.zsh
+source ~/.config/zsh/alias.zsh
+source ~/.config/zsh/vim-mode.zsh
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source <(fzf --zsh)
+
+bindkey '\C-y' autosuggest-accept
+
+. "/Users/smoose/.deno/env"
+
+export PATH="/Users/smoose/.local/share/tmux/plugins/tmuxifier/bin:$PATH"
+export PATH="/Users/smoose/go/bin:$PATH"
+
+export STARSHIP_CONFIG=~/.config/starship/starship.toml # starship config path
+export EDITOR="nvim"
+export LDFLAGS="-L/opt/homebrew/lib"
+export CPPFLAGS="-I/opt/homebrew/include"
+export TMUXIFIER_LAYOUT_PATH="$HOME/.config/tmux/layouts"
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
+eval "$(tmuxifier init -)"
+eval "$(starship init zsh)"
+eval "$(thefuck --alias)"
+eval "$(zoxide init zsh)"
+
+$HOME/scripts/fetch.sh

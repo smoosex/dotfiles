@@ -1,0 +1,67 @@
+#!/usr/bin/env sh
+
+#
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+#
+# see this wiki page for information:
+#  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+#
+# echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# global settings
+yabai -m config \
+  external_bar all:30:0 \
+  menubar_opacity 1.0 \
+  mouse_follows_focus true \
+  focus_follows_mouse false \
+  display_arrangement_order default \
+  window_origin_display focused \
+  window_placement second_child \
+  window_insertion_point focused \
+  window_zoom_persist off \
+  window_shadow float \
+  window_opacity on \
+  window_opacity_duration 0.2 \
+  active_window_opacity 1.0 \
+  normal_window_opacity 0.90 \
+  window_animation_duration 0.5 \
+  window_animation_easing ease_out_quint \
+  insert_feedback_color 0xff000000 \
+  split_ratio 0.50 \
+  split_type auto \
+  auto_balance true \
+  top_padding 08 \
+  bottom_padding 08 \
+  left_padding 08 \
+  right_padding 08 \
+  window_gap 10 \
+  layout bsp \
+  mouse_modifier alt \
+  mouse_action1 move \
+  mouse_action2 resize \
+  mouse_drop_action swap
+
+yabai -m rule --add app="^(deno|Kitty)" manage=on
+
+# Exclude problematic apps from being managed:
+yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|Raycast|Karabiner-Elements|Karabiner-EventViewer|Music|CleanMyMac X|Surge|WeChat|MediaMate|ProNotes|Navicat Premium|Pritunl)$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
+# yabai -m rule --add label="WeChat" app="WeChat" title="^(Video Call.*)$" manage=off
+# yabai -m rule --add label="WeChat" app="WeChat" title="WeChat (Chats)" manage=on
+yabai -m rule --add label="IntelliJ IDEA" app="IntelliJ IDEA" title="(Settings|Create Library)" manage=off
+yabai -m rule --add label="Navicat Premium" app="Navicat Premium" title="Settings" manage=off
+
+yabai -m rule --add app="Navicat Premium" title="Navicat Premium" manage=on
+
+yabai -m signal --add event=window_created action="yabai -m query --windows | jq -r '.[0].id' | xargs -I {} yabai -m window --focus {}"
+yabai -m signal --add event=window_destroyed action="yabai -m query --windows --space | jq -r '.[0].id' | xargs -I {} yabai -m window --focus {}"
+# yabai -m window --move abs:100:200
+
+echo "yabai configuration loaded.."
+osascript -e 'display notification "Configuration loaded" with title "Yabai!"'
