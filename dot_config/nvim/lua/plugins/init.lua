@@ -1,42 +1,17 @@
----@type NvPluginSpec[]
 return {
 	-- [[ ################################### base ################################### ]]
 	-- conform
-	{
-		"stevearc/conform.nvim",
-		require("configs.syntax").conform,
-	},
-
+	require("configs.syntax").conform,
 	-- cmp
-	{
-		"hrsh7th/nvim-cmp",
-		require("configs.complete").cmp,
-	},
-
+	require("configs.complete").cmp,
 	-- lsp
-	{
-		"neovim/nvim-lspconfig",
-		require("configs.syntax").lspconfig,
-	},
-
+	require("configs.syntax").lspconfig,
 	-- treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-		require("configs.syntax").treesitter,
-	},
-
+	require("configs.syntax").treesitter,
 	-- telescope
-	{
-		"nvim-telescope/telescope.nvim",
-		require("configs.telescope").telescope,
-	},
-
+	require("configs.telescope").telescope,
 	-- gitsigns
-	{
-		"lewis6991/gitsigns.nvim",
-		require("configs.git").gitsigns,
-	},
-
+	require("configs.git").gitsigns,
 	-- timerly
 	{
 		"nvzone/timerly",
@@ -60,127 +35,55 @@ return {
 	-- [[ ################################### enhancement ################################### ]]
 
 	-- zen mode
-	{
-		"folke/zen-mode.nvim",
-		require("configs.enhancement").zen,
-	},
-
+	require("configs.enhancement").zen,
 	-- todo comments
-	{
-		"folke/todo-comments.nvim",
-		require("configs.telescope").todo_comments,
-	},
-
+	require("configs.telescope").todo_comments,
 	-- pretty diagnostics panel
-	{
-		"folke/trouble.nvim",
-		require("configs.syntax").trouble,
-	},
-
+	require("configs.syntax").trouble,
 	-- nvim-ts-context-commentstring
-	{
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		require("configs.syntax").ts_context_comment,
-	},
-
+	require("configs.syntax").ts_context_comment,
 	-- parinfer
-	{
-		"gpanders/nvim-parinfer",
-		require("configs.syntax").parinfer,
-	},
-
+	require("configs.syntax").parinfer,
 	-- flash
-	{
-		"folke/flash.nvim",
-		require("configs.enhancement").flash,
-	},
-
+	require("configs.enhancement").flash,
 	-- snack
-	{
-		"folke/snacks.nvim",
-		require("configs.enhancement").snack,
-	},
-
+	require("configs.enhancement").snack,
 	-- nvim-surround
-	{
-		"kylechui/nvim-surround",
-		require("configs.enhancement").surround,
-	},
-
+	require("configs.enhancement").surround,
 	-- multicursor
-	{
-		"jake-stewart/multicursor.nvim",
-		require("configs.enhancement").multicursor,
-	},
-
+	require("configs.enhancement").multicursor,
 	-- markdown peek
-	{
-		"toppair/peek.nvim",
-		require("configs.markdown").peek,
-	},
-
+	require("configs.markdown").peek,
 	-- render-markdown
-	{ "MeanderingProgrammer/render-markdown.nvim", require("configs.markdown").render_markdown },
-
+	require("configs.markdown").render_markdown,
 	-- glimmer
-	{
-		"rachartier/tiny-glimmer.nvim",
-		require("configs.enhancement").glimmer,
-	},
-
+	require("configs.enhancement").glimmer,
 	-- spectre
-	{
-		"nvim-pack/nvim-spectre",
-		require("configs.enhancement").spectre,
-	},
-
+	require("configs.enhancement").spectre,
 	-- floaterm
-	{
-		"nvzone/floaterm",
-		require("configs.enhancement").floaterm,
-	},
-
-  --diffview
-  {
-    "sindrets/diffview.nvim",
-    require("configs.git").diffview,
-  },
-
-  -- avante
-	-- {
-	-- 	"yetone/avante.nvim",
-	-- 	require("configs.ai").avante,
-	-- },
-
+	require("configs.enhancement").floaterm,
+	--diffview
+	require("configs.git").diffview,
+	-- avante
+	require("configs.ai").avante,
 	-- im-select
-	{
-		"keaising/im-select.nvim",
-		require("configs.enhancement").im_select,
-	},
+	require("configs.enhancement").im_select,
+	-- hardtime
+	require("configs.enhancement").hahrdtime,
 
 	-- [[ #################################################################################### ]]
 
 	-- [[ ################################### intergration ################################### ]]
 	-- yazi
-	{
-		"mikavilpas/yazi.nvim",
-		require("configs.intergration").yazi,
-	},
-
+	require("configs.intergration").yazi,
 	-- vim-tmux-navigator
-	{
-		"christoomey/vim-tmux-navigator",
-		require("configs.intergration").tmux,
-	},
-
+	require("configs.intergration").tmux,
 	-- chezmoi
-	{
-		"xvzc/chezmoi.nvim",
-		require("configs.intergration").chezmoi,
-	},
-
+	require("configs.intergration").chezmoi,
 	{ "jbyuki/venn.nvim", enabled = false, cmd = "VBox" },
+
 	-- [[ #################################################################################### ]]
+
 	-- dap
 	{
 		"mfussenegger/nvim-dap",

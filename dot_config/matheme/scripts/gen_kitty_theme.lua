@@ -20,8 +20,8 @@ for i = 0, 15 do
 end
 format(lines, base_16["base00"], "background")
 format(lines, base_16["base05"], "foreground")
-format(lines, base_16["base03"], "cursor")
-format(lines, base_16["base07"], "cursor_text")
+format(lines, base_16["base05"], "cursor")
+format(lines, base_16["base00"], "cursor_text")
 
 os.execute("mkdir -p /tmp/matheme")
 local fp, err = io.open("/tmp/matheme/kitty_theme", "w")

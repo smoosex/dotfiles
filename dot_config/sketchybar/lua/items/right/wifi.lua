@@ -5,7 +5,7 @@ local settings = require("settings")
 
 local popup_width = 250
 
-local wifi = Sbar.add("item", "left.wifi", {
+local wifi = Sbar.add("item", "wifi", {
 	position = "right",
 	icon = {
 		color = colors.theme.c8,

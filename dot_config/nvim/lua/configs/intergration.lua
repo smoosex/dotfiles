@@ -31,6 +31,7 @@ local M = {
 
 	yazi = {
 		"mikavilpas/yazi.nvim",
+    enabled = false,
 		opts = {
 			-- if you want to open yazi instead of netrw, see below for more info
 			open_for_directories = false,

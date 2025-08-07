@@ -184,9 +184,9 @@ shift-down = ['volume set 0', 'mode main']
 if.app-id = 'org.alacritty'
 run = ['layout floating', 'move-node-to-workspace 6']
 
-# [[on-window-detected]]
-# if.app-id = 'company.thebrowser.Browser'
-# run = 'move-node-to-workspace 8'
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run = ['layout floating', 'move-node-to-workspace 6']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'

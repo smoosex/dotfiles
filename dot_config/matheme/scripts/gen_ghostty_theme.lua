@@ -20,7 +20,8 @@ for i = 0, 15 do
 end
 format(lines, base_16["base00"], "background")
 format(lines, base_16["base05"], "foreground")
-format(lines, base_16["base0D"], "cursor-color")
+format(lines, base_16["base05"], "cursor-color")
+format(lines, base_16["base00"], "cursor-text")
 format(lines, base_16["base03"], "selection-background")
 format(lines, base_16["base05"], "selection-foreground")
 

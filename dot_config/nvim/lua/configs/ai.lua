@@ -1,9 +1,9 @@
 local M = {
 	avante = {
 		"yetone/avante.nvim",
-    keys = {
-      { "<leader>aa", "<cmd>AvanteAsk<cr>", desc = "Ask a question using Avante" },
-    },
+		keys = {
+			{ "<leader>aa", "<cmd>AvanteAsk<cr>", desc = "Ask a question using Avante" },
+		},
 		version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
 		-- cmd = { "AvanteAsk" },
 		opts = {
@@ -54,7 +54,8 @@ local M = {
 		end,
 
 		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-		build = "make",
+		build = vim.fn.has("win32") and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+			or "make",
 		-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
 	},
 

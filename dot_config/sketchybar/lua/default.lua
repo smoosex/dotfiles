@@ -10,6 +10,7 @@ Sbar.default({
 			size = settings.font.size,
 		},
 		color = colors.theme.c7,
+    highlight_color = colors.theme.c8,
 		padding_left = settings.paddings,
 		padding_right = settings.paddings,
 	},

@@ -9,7 +9,7 @@ local theme_list = theme_utils.get_matheme_list()
 local popup_width = 150
 local pop_items = {} -- 存放 popup 子项的引用
 
-local matheme = Sbar.add("item", "left.matheme", {
+local matheme = Sbar.add("item", "matheme", {
 	position = "right",
 	icon = {
 		string = icons.palette,
@@ -46,13 +46,13 @@ end
 
 local function on_hover_theme_picker()
 	Sbar.animate(settings.base_animation, settings.base_animation_duration, function()
-		matheme:set({ background = { color = colors.theme.c9 } })
+		matheme:set({ icon = { color = colors.theme.c0 }, background = { color = colors.theme.c9 } })
 	end)
 end
 
 local function on_hover_leave_theme_picker()
 	Sbar.animate(settings.base_animation, settings.base_animation_duration, function()
-		matheme:set({ background = { color = colors.theme.c2 } })
+		matheme:set({ icon = { color = colors.theme.c7 }, background = { color = colors.theme.c2 } })
 	end)
 end
 
@@ -83,5 +83,5 @@ for i = 1, #theme_list do
 	pop_item:subscribe("mouse.clicked", switch_theme)
 	pop_item:subscribe("mouse.entered", on_hover_item)
 	pop_item:subscribe("mouse.exited", on_hover_leave_item)
-  pop_items[theme_list[i]] = pop_item
+	pop_items[theme_list[i]] = pop_item
 end

@@ -7,10 +7,23 @@ local icons = {
 	cpu = "",
 	clipboard = "",
 	palette = "󱥚",
-  space = "",
-  focused_space = "",
+	space = "",
+	focused_space = "",
+	tmux = "",
 
-  switch_bar = "󰟡",
+  number = {
+    one = "󰎤",
+    two = "󰎧",
+    three = "󰎪",
+    four = "󰎭",
+    five = "󰎱",
+    six = "󰎳",
+    seven = "󰎶",
+    eight = "󰎹",
+    nine = "󰎼",
+  },
+
+	switch_bar = "󰟡",
 	switch = {
 		on = "󱨥",
 		off = "󱨦",

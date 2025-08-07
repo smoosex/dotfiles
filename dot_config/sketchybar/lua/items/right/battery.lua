@@ -5,7 +5,7 @@ local settings = require("settings")
 
 local popup_width = 200
 
-local battery = Sbar.add("item", "left.battery", {
+local battery = Sbar.add("item", "battery", {
 	position = "right",
 	icon = {},
 	label = {

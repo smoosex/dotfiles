@@ -103,18 +103,6 @@ chars = "\u0002\u0025"
 key = "|"
 mods = "Command | Shift"
 
-# Move tmux window to left on Cmd+i in tmux it is M-i (alt+i it is a custom keybind)
-[[keyboard.bindings]]
-chars = "\u0002\u007b"
-key = "i"
-mods = "Command"
-
-# Move tmux window to right on Cmd+o in tmux it is M-o (alt+o it is a custom keybind)
-[[keyboard.bindings]]
-chars = "\u0002\u007d"
-key = "o"
-mods = "Command"
-
 # Go to copy mode on Cmd+u in tmux it is Ctrl+b+[
 [[keyboard.bindings]]
 chars = "\u0002\u005b"

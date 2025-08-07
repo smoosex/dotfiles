@@ -289,9 +289,7 @@ local M = {
 	zen = {
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",
-		config = function()
-			require("configs.zenmode")
-		end,
+		opts = {}
 	},
 
 	floaterm = {
@@ -310,12 +308,21 @@ local M = {
 
 	im_select = {
 		"SilverofLight/im-select.nvim",
-    event = "VeryLazy",
+		event = "VeryLazy",
 		config = function()
 			require("im_select").setup({
-        hybrid_mode = true,
-      })
+				hybrid_mode = true,
+			})
 		end,
+	},
+
+	hahrdtime = {
+		"m4xshen/hardtime.nvim",
+		cmd = "Hardtime",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		opts = {
+			max_count = 30,
+		},
 	},
 }
 

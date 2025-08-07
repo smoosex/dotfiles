@@ -7,7 +7,7 @@ local animations = require("animations")
 -- the cpu load data, which is fired every 2.0 seconds.
 Sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 2.0")
 
-local cpu = Sbar.add("item", "left.cpu", {
+local cpu = Sbar.add("item", "cpu", {
 	position = "right",
 	icon = {
 		string = icons.cpu,

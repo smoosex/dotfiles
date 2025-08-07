@@ -29,7 +29,7 @@ local volume_slider = Sbar.add("slider", "volume.slider", 0, {
 	},
 })
 
-local volume_icon = Sbar.add("item", "left.volume", {
+local volume_icon = Sbar.add("item", "volume", {
 	position = "right",
 	icon = {
 		drawing = true,

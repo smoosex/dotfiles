@@ -2,7 +2,7 @@ local settings = require("settings")
 local colors = require("colors")
 local animations = require("animations")
 
-local cal = Sbar.add("item", {
+local cal = Sbar.add("item", "datetime", {
 	icon = {
 		color = colors.theme.fg,
 		font = {

@@ -5,7 +5,7 @@ local sw_bar_position = require("sw_bar_position")
 
 local current_bar_position = settings.bar_position
 
-local switch_bar = Sbar.add("item", "left.switch_bar", {
+local switch_bar = Sbar.add("item", "switch_bar", {
 	position = "right",
 	icon = {
 		string = icons.switch_bar,
