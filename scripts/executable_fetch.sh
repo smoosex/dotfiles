@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/sh
 
 # ————————————————
 # 1. 定义颜色前缀
@@ -8,28 +8,34 @@ b=4
 
 # ————————————————
 # 2. 生成 c0…c7 和 b0…b7 转义码
-#    - 用 ${(P)prefix} 获取变量值（间接扩展）
-#    - 用 typeset -g 来全局赋值
+#    - 用 eval 间接扩展变量名
 # ————————————————
 for prefix in c b; do
-  code=${(P)prefix}           # 如果 prefix=c，则这里取到 $c 的值（3）；同理 prefix=b 时取到 4
-  for i in {0..7}; do
-    esc=$(printf "%b" "\e[${code}${i}m")
-    typeset -g "${prefix}${i}=${esc}"
+  # 获取前缀对应的数值（如 c->3，b->4）
+  eval code=\${$prefix}
+  i=0
+  while [ "$i" -le 7 ]; do
+    # 生成 ESC[${code}${i}m
+    esc=$(printf '\033[%sm' "${code}${i}")
+    # 全局赋值，例如 c0、c1 … 或 b0、b1 …
+    eval "${prefix}${i}='${esc}'"
+    i=$((i + 1))
   done
 done
 
 # ————————————————
 # 3. 构造色条（▁▁▁）
 # ————————————————
-colors=""
-for i in {0..7}; do
+colors=''
+i=0
+while [ "$i" -le 7 ]; do
   attr=$((30 + i))
-  if $bold_flag; then
-    colors+=$(printf "%b" "\e[1;${attr}m▁▁▁")
+  if [ "$bold_flag" ]; then
+    colors="$colors$(printf '\033[1;%sm▁▁▁' "${attr}")"
   else
-    colors+=$(printf "%b" "\e[${attr}m▁▁▁")
+    colors="$colors$(printf '\033[%sm▁▁▁'  "${attr}")"
   fi
+  i=$((i + 1))
 done
 
 # ————————————————
@@ -39,7 +45,7 @@ OLD_IFS=$IFS
 IFS=$'\n'
 set -- $(fastfetch --logo none \
     --wm-detect-plugin \
-    -s title:os:kernel:wm:shell:initsystem:packages:uptime:memory \
+    -s title:os:kernel:wm:initsystem:packages:uptime:memory \
     --os-format '{2} {10} {8}' \
     --wm-format '{4}' \
     --packages-format '{17}(brew) {18}(cask)' \
@@ -52,11 +58,13 @@ host=${title#*@}
 os="${2#OS: }"
 kernel="${3#Kernel: }"
 wm="${4#WM: }"
-shell="${5#Shell: }"
-init="${6#Init System: }"
-pkgs="${7#Packages: }"
-uptime="${8#Uptime: }"
-mem="${9#Memory: }"
+init="${5#Init System: }"
+pkgs="${6#Packages: }"
+uptime="${7#Uptime: }"
+mem="${8#Memory: }"
+
+# 从环境变量中获取 shell 名称
+shell="${SHELL##*/}"
 
 # ————————————————
 # 5. 输出主界面

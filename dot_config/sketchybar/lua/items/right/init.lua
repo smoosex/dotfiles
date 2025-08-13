@@ -1,7 +1,7 @@
 local colors = require("colors")
 local settings = require("settings")
 
-require("items.right.calendar")
+require("items.right.datetime")
 
 local battery = require("items.right.battery")
 local volume = require("items.right.volume")
