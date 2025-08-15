@@ -59,7 +59,7 @@ return {
 	-- glimmer
 	require("configs.enhancement").glimmer,
 	-- spectre
-	require("configs.enhancement").spectre,
+	-- require("configs.enhancement").spectre,
 	-- floaterm
 	require("configs.enhancement").floaterm,
 	--diffview
@@ -80,7 +80,7 @@ return {
 	require("configs.intergration").tmux,
 	-- chezmoi
 	require("configs.intergration").chezmoi,
-	{ "jbyuki/venn.nvim", enabled = false, cmd = "VBox" },
+	-- { "jbyuki/venn.nvim", enabled = false, cmd = "VBox" },
 
 	-- [[ #################################################################################### ]]
 

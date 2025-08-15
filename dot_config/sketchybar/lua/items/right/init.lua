@@ -23,6 +23,7 @@ Sbar.add("item", "bracket.battery.volume.wifi.padding.left", {
 })
 
 require("items.right.cpu")
+require("items.right.input_source")
 require("items.right.matheme")
 require("items.right.switch_bar")
 require("items.right.tmux")

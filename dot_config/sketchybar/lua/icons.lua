@@ -11,6 +11,11 @@ local icons = {
 	focused_space = "",
 	tmux = "",
 
+  input_source = {
+    ABC = "󰬈",
+    ITABC = "󰏬",
+  },
+
   number = {
     one = "󰎤",
     two = "󰎧",

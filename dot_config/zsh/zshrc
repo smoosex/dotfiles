@@ -42,4 +42,4 @@ eval "$(starship init zsh)"
 eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
 
-$HOME/scripts/fetch.sh
+fastfetch

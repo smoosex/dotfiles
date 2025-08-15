@@ -59,8 +59,7 @@ cpu:subscribe("mouse.clicked", function()
 	Sbar.exec("open -a 'Activity Monitor'")
 end)
 
--- sbar.add("alias", "WeChat,Item-0", {
+-- Sbar.add("alias", "TextInputMenuAgent,Item-0", {
 -- 	position = "right",
--- 	alias = { color = colors.tundra.c2 },
--- 	-- background = { color = colors.tundra.c0, height = 20, border_width = 0 },
+-- 	alias = { color = colors.theme.c8, scale = 0.8 },
 -- })
