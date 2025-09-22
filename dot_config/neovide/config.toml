@@ -12,5 +12,5 @@ vsync = true
 wsl = false
 
 [font]
-normal = [] # Will use the bundled Fira Code Nerd Font by default
+normal = "Maple Mono NF CN Light" # Will use the bundled Fira Code Nerd Font by default
 size = 14.0

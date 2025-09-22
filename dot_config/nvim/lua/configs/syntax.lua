@@ -173,7 +173,7 @@ local M = {
 				-- webdev
 				javascript = { "biome" },
 				javascriptreact = { "biome" },
-				typescript = { "prettier" },
+				typescript = { "biome" },
 				typescriptreact = { "biome" },
 				vue = { "prettier" },
 				svelte = { "deno_fmt" },

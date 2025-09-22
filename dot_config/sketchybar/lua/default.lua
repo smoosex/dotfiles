@@ -31,7 +31,7 @@ Sbar.default({
 		shadow = {
       drawing = true,
 			distance = 4,
-      color = colors.theme.c4,
+      color = colors.theme.c3,
       angle = 33,
 		},
 	},

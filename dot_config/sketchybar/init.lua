@@ -15,7 +15,7 @@ Sbar.aerospace = aerospace
 
 -- Bundle the entire initial configuration into a single message to sketchybar
 Sbar.begin_config()
-Sbar.hotload(true)
+Sbar.hotload(false)
 require("bar")
 require("default")
 require("items")

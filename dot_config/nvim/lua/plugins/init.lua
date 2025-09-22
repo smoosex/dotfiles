@@ -3,7 +3,9 @@ return {
 	-- conform
 	require("configs.syntax").conform,
 	-- cmp
-	require("configs.complete").cmp,
+	-- require("configs.complete").cmp,
+  -- blink
+  require("configs.complete").blink,
 	-- lsp
 	require("configs.syntax").lspconfig,
 	-- treesitter
@@ -66,6 +68,8 @@ return {
 	require("configs.git").diffview,
 	-- avante
 	require("configs.ai").avante,
+  -- mcp
+  require("configs.ai").mcphub,
 	-- im-select
 	require("configs.enhancement").im_select,
 	-- hardtime
@@ -81,6 +85,8 @@ return {
 	-- chezmoi
 	require("configs.intergration").chezmoi,
 	-- { "jbyuki/venn.nvim", enabled = false, cmd = "VBox" },
+  -- supermaven
+  require("configs.complete").supermaven,
 
 	-- [[ #################################################################################### ]]
 

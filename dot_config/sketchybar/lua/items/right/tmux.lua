@@ -85,9 +85,8 @@ local draw_tmux = function()
 				shadow = {
 					drawing = false,
 				},
-				color = colors.theme.c4,
+				color = colors.theme.c3,
 			},
-			-- padding_left = 0,
 			padding_right = 0,
 		})
 		windows_items[w.index] = w_item

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+options=(
+  # Specifies the style of the border (either round or square)
+	style=round
+	width=4.0
+  # If set to on, the border will be drawn with retina resolution.
+	hidpi=on
+	active_color=0xff7fbbb3
+	inactive_color=0x002c2e34
+	background_color=0x002c2e34
+)
+
+borders "${options[@]}"

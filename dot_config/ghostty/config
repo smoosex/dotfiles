@@ -1,4 +1,4 @@
-auto-update-channel = tip
+auto-update-channel = stable
 
 config-file = ./appearances.conf
 config-file = ./mappings.conf

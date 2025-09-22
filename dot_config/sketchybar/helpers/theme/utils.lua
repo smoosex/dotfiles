@@ -3,7 +3,7 @@ local M = {}
 local home_dir = os.getenv("HOME")
 
 M.get_matheme_list = function()
-  local cmd = home_dir .. "/.config/sketchybar/bin/matheme ls"
+  local cmd = home_dir .. "/.config/matheme/bin/matheme ls"
 	local handle = io.popen(cmd)
 	if not handle then
 		error("无法执行命令: " .. cmd)
@@ -25,7 +25,7 @@ M.get_matheme_list = function()
 end
 
 M.switch_theme = function(theme)
-	local cmd = home_dir .. "/.config/sketchybar/bin/matheme sw -t " .. theme
+	local cmd = home_dir .. "/.config/matheme/bin/matheme sw -t " .. theme
 	os.execute(cmd)
 end
 

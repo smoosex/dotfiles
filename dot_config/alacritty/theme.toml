@@ -1,3 +1,4 @@
+
 [colors.primary]
 background = "#2b3339"
 foreground = "#d3c6aa"
@@ -56,6 +57,8 @@ magenta = "#e67e80"
 cyan = "#e69875"
 white = "#e7dabe"
 
+
 [[colors.indexed_colors]]
 index = 16
 color = "#d699b6"
+

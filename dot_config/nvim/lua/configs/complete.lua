@@ -3,10 +3,6 @@ local M = {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			{
-				"supermaven-inc/supermaven-nvim",
-				opts = {},
-			},
-			{
 				-- snippet plugin
 				"L3MON4D3/LuaSnip",
 				config = function(_, opts)
@@ -52,14 +48,23 @@ local M = {
 		{ import = "nvchad.blink.lazyspec" },
 		{
 			"saghen/blink.cmp",
+			dependencies = {
+				"Kaiser-Yang/blink-cmp-avante",
+			},
 			version = "*",
 			opts = {
-				keymap = {
-					["<CR>"] = { "accept", "fallback" },
-					["<S-Tab>"] = { "select_prev", "fallback" },
-					["<Tab>"] = { "select_next", "fallback" },
-					["<C-b>"] = { "scroll_documentation_up", "fallback" },
-					["<C-f"] = { "scroll_documentation_down", "fallback" },
+				sources = {
+					-- Add 'avante' to the list
+					default = { "avante", "lsp", "snippets", "buffer", "path" },
+					providers = {
+						avante = {
+							module = "blink-cmp-avante",
+							name = "Avante",
+							opts = {
+								-- options for blink-cmp-avante
+							},
+						},
+					},
 				},
 			},
 		},
@@ -78,6 +83,12 @@ local M = {
 				},
 			})
 		end,
+	},
+
+	supermaven = {
+		"supermaven-inc/supermaven-nvim",
+		event = "InsertEnter",
+		opts = {},
 	},
 }
 
