@@ -9,12 +9,12 @@ hyper - l : yabai -m window --focus east || skhd -k "ctrl - right" || yabai -m d
 
 # Space Navigation
 hyper - 0x29 : yabai -m space --focus recent # Focus the last space
-hyper - p : skhd -k "ctrl - left"
-hyper - n : skhd -k "ctrl - right"
-hyper - 1 : yabai -m space --focus 1
-hyper - 2 : yabai -m space --focus 2
-hyper - 3 : yabai -m space --focus 3
-hyper - 4 : yabai -m space --focus 4
+hyper - 0x21 : skhd -k "ctrl - left"
+hyper - 0x1E : skhd -k "ctrl - right"
+hyper - u : yabai -m space --focus 1
+hyper - i : yabai -m space --focus 2
+hyper - o : yabai -m space --focus 3
+hyper - p : yabai -m space --focus 4
 hyper - 5 : yabai -m space --focus 5
 hyper - 6 : yabai -m space --focus 6
 hyper - 7 : yabai -m space --focus 7
@@ -30,38 +30,39 @@ hyper - i : yabai -m display --focus recent
 # │                    Windows Movement                      │
 # ╰──────────────────────────────────────────────────────────╯
 # Windows Movement in spaces
-cmd + alt - h : yabai -m window --swap west || yabai -m window --space prev --focus
-cmd + alt - j : yabai -m window --swap south
-cmd + alt - k : yabai -m window --swap north
-cmd + alt - l : yabai -m window --swap east || yabai -m window --space next --focus
+lctrl + lshift - h : yabai -m window --swap west || yabai -m window --space prev --focus
+lctrl + lshift - j : yabai -m window --swap south
+lctrl + lshift - k : yabai -m window --swap north
+lctrl + lshift - l : yabai -m window --swap east || yabai -m window --space next --focus
 
 # Mirror Space on X and Y Axis: shift + lalt - {x, y}
-cmd + lalt - x : yabai -m space --mirror x-axis
-cmd + lalt - y : yabai -m space --mirror y-axis
+lctrl + lshift - x : yabai -m space --mirror x-axis
+lctrl + lshift - y : yabai -m space --mirror y-axis
 
 # Toggle split orientation of the selected windows node
-cmd + lalt - s : yabai -m window --toggle split
+lctrl + lshift - s : yabai -m window --toggle split
+
+lctrl + lshift - 0x1B : yabai -m window --sub-layer below
+lctrl + lshift - 0x18 : yabai -m window --sub-layer above
 
 # Move window between spaces
-cmd + lalt - p : yabai -m window --space prev --focus
-cmd + lalt - n : yabai -m window --space next --focus
-cmd + lalt - 1 : yabai -m window --space 1 --focus
-cmd + lalt - 2 : yabai -m window --space 2 --focus
-cmd + lalt - 3 : yabai -m window --space 3 --focus
-cmd + lalt - 4 : yabai -m window --space 4 --focus
-cmd + lalt - 5 : yabai -m window --space 5 --focus
-cmd + lalt - 6 : yabai -m window --space 6 --focus
-cmd + lalt - 7 : yabai -m window --space 7 --focus
-cmd + lalt - 8 : yabai -m window --space 8 --focus
-cmd + lalt - 9 : yabai -m window --space 9 --focus
+lshift + lalt - u : yabai -m window --space 1 --focus
+lshift + lalt - i : yabai -m window --space 2 --focus
+lshift + lalt - o : yabai -m window --space 3 --focus
+lshift + lalt - p : yabai -m window --space 4 --focus
+lshift + lalt - 5 : yabai -m window --space 5 --focus
+lshift + lalt - 6 : yabai -m window --space 6 --focus
+lshift + lalt - 7 : yabai -m window --space 7 --focus
+lshift + lalt - 8 : yabai -m window --space 8 --focus
+lshift + lalt - 9 : yabai -m window --space 9 --focus
 
 # Change layout of desktop
-cmd + alt - b : yabai -m config layout bsp
-cmd + alt - f : yabai -m config layout float
+lctrl + lshift - b : yabai -m config layout bsp
+lctrl + lshift - f : yabai -m config layout float
 
 # Send space to last display
-cmd + alt -tab : yabai -m space --display recent --focus
-cmd + shift -tab : yabai -m window --display recent --focus
+lctrl + alt - tab : yabai -m space --display recent --focus
+lctrl + shift - tab : yabai -m window --display recent --focus
 
 # ╭──────────────────────────────────────────────────────────╮
 # │                     Windows Resize                       │
@@ -85,6 +86,25 @@ hyper - return : yabai -m window --toggle zoom-fullscreen
 meh - return : yabai -m window --toggle zoom-parent
 
 # ╭──────────────────────────────────────────────────────────╮
+# │                  Float Window Control                    │
+# ╰──────────────────────────────────────────────────────────╯
+# 1/2 split row
+lctrl + lalt - h : yabai -m window --grid 1:2:0:0:1:1
+lctrl + lalt - l : yabai -m window --grid 1:2:1:0:1:1
+
+# 1/4 split
+lctrl + lalt - u : yabai -m window --grid 2:2:0:0:1:1
+lctrl + lalt - i : yabai -m window --grid 2:2:1:0:1:1
+lctrl + lalt - j : yabai -m window --grid 2:2:0:1:1:1
+lctrl + lalt - k : yabai -m window --grid 2:2:1:1:1:1
+
+# Fullscreen
+lctrl + lalt - return : yabai -m window --grid 1:1:0:0:1:1
+
+# Almost full screen
+lctrl + lcmd - return : yabai -m window --grid 9:9:1:1:7:7
+
+# ╭──────────────────────────────────────────────────────────╮
 # │                         Others                           │
 # ╰──────────────────────────────────────────────────────────╯
 # Create space on the active display
@@ -94,5 +114,3 @@ cmd + shift -d : yabai -m space --destroy
 
 # Float / Unfloat window
 lalt - space : yabai -m window --toggle float
-
-# hyper - r : bash ~/dotfiles/scripts/daily-note.sh

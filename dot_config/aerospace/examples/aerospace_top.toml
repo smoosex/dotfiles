@@ -19,7 +19,7 @@ exec-on-workspace-change = [
 ]
 
 # Start AeroSpace at login
-start-at-login = true
+start-at-login = false
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 # enable-normalization-flatten-containers = true
@@ -194,6 +194,10 @@ run = ['layout floating', 'move-node-to-workspace 7']
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
+run = ['layout floating', 'move-node-to-workspace 7']
+
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
 run = ['layout floating', 'move-node-to-workspace 7']
 
 [[on-window-detected]]

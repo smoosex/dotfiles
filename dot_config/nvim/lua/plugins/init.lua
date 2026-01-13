@@ -4,8 +4,8 @@ return {
 	require("configs.syntax").conform,
 	-- cmp
 	-- require("configs.complete").cmp,
-  -- blink
-  require("configs.complete").blink,
+	-- blink
+	require("configs.complete").blink,
 	-- lsp
 	require("configs.syntax").lspconfig,
 	-- treesitter
@@ -55,38 +55,46 @@ return {
 	-- multicursor
 	require("configs.enhancement").multicursor,
 	-- markdown peek
-	require("configs.markdown").peek,
+	-- require("configs.markdown").peek,
 	-- render-markdown
 	require("configs.markdown").render_markdown,
 	-- glimmer
 	require("configs.enhancement").glimmer,
 	-- spectre
-	-- require("configs.enhancement").spectre,
+	require("configs.enhancement").spectre,
 	-- floaterm
 	require("configs.enhancement").floaterm,
 	--diffview
 	require("configs.git").diffview,
 	-- avante
-	require("configs.ai").avante,
-  -- mcp
-  require("configs.ai").mcphub,
+	-- require("configs.ai").avante,
+	-- mcp
+	-- require("configs.ai").mcphub,
+	-- im-select
+	-- opencode
+	-- require("configs.ai").opencode,
+	--claude-code
+	-- require("configs.ai").claudecode,
+	-- sidekick
+	require("configs.ai").sidekick,
+
 	-- im-select
 	require("configs.enhancement").im_select,
 	-- hardtime
-	require("configs.enhancement").hahrdtime,
+	-- require("configs.enhancement").hahrdtime,
 
 	-- [[ #################################################################################### ]]
 
 	-- [[ ################################### intergration ################################### ]]
 	-- yazi
-	require("configs.intergration").yazi,
+	-- require("configs.intergration").yazi,
 	-- vim-tmux-navigator
 	require("configs.intergration").tmux,
 	-- chezmoi
 	require("configs.intergration").chezmoi,
 	-- { "jbyuki/venn.nvim", enabled = false, cmd = "VBox" },
-  -- supermaven
-  require("configs.complete").supermaven,
+	-- supermaven
+	require("configs.complete").supermaven,
 
 	-- [[ #################################################################################### ]]
 

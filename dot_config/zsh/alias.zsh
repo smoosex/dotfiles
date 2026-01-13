@@ -30,5 +30,3 @@ alias lg="lazygit"
 # eza
 alias lse="eza --icons"
 alias ll="eza -l --icons"
-
-alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").full_view_ask()end, 100)"'

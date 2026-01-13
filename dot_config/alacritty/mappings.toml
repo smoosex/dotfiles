@@ -50,10 +50,10 @@ chars = "\u0002\u0039"
 key = "9"
 mods = "Command"
 
-[[keyboard.bindings]]
-chars = "\u0002\u0030"
-key = "0"
-mods = "Command"
+# [[keyboard.bindings]]
+# chars = "\u0002\u0030"
+# key = "0"
+# mods = "Command"
 
 # New tmux window on Cmd+t in tmux it is Ctrl+b+c
 [[keyboard.bindings]]

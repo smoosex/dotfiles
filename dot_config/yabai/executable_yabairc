@@ -26,7 +26,7 @@ yabai -m config \
   window_opacity on \
   window_opacity_duration 0.2 \
   active_window_opacity 1.0 \
-  normal_window_opacity 0.90 \
+  normal_window_opacity 0.80 \
   window_animation_duration 0.5 \
   window_animation_easing ease_out_quint \
   insert_feedback_color 0xff000000 \
@@ -44,24 +44,50 @@ yabai -m config \
   mouse_action2 resize \
   mouse_drop_action swap
 
-yabai -m rule --add app="^(deno|Kitty)" manage=on
+# spaces
+yabai -m space 1 --label terminal
+yabai -m space 2 --label browser
+yabai -m space 3 --label communication
+yabai -m space 4 --label video
+yabai -m space 5 --label nsfw
+
+###############################################################################
+# SIGNALS
+###############################################################################
+# Focus it when a window is created
+# yabai -m signal --add event=window_created action="yabai -m window --focus \$YABAI_WINDOW_ID && sketchybar --trigger yabai_window_change"
+# # When one window is closed, focus shifts to another window in the same space. If it is the last window, nothing happens.
+# yabai -m signal --add event=window_destroyed action='
+# win=$(yabai -m query --windows --space | jq -r --argjson d "$YABAI_WINDOW_ID" "map(select(.id != \$d)) | if length > 0 then .[0].id else empty end");
+# if [ -n "$win" ]; then yabai -m window --focus "$win"; fi && sketchybar --trigger yabai_window_change
+# '
+
+yabai -m signal --add event=window_created action="sketchybar --trigger yabai_window_change"
+yabai -m signal --add event=window_destroyed action="sketchybar --trigger yabai_window_change"
+
+# window_focused
+yabai -m signal --add event=window_focused action="sketchybar --trigger yabai_window_change"
+# window_moved
+yabai -m signal --add event=window_moved action="sketchybar --trigger yabai_window_change"
+# space_changed
+yabai -m signal --add event=space_created action="sketchybar --trigger yabai_space_change"
+yabai -m signal --add event=space_destroyed action="sketchybar --trigger yabai_space_change"
+yabai -m signal --add event=space_changed action="sketchybar --trigger yabai_space_change && sketchybar --trigger yabai_window_change"
+
+###############################################################################
+# RULES
+###############################################################################
+yabai -m rule --add app="^(Alacritty|Ghostty|WezTerm|kitty|Terminal)$" space=^terminal
+yabai -m rule --add app="^(Safari|Zen|Brave|Google Chrome|Chromium|Firefox|Vivaldi|Opera|Microsoft Edge)$" space=^browser
+yabai -m rule --add app="^(Mail|WeChat|Feishu|Discord|QQ)$" space=^communication
 
 # Exclude problematic apps from being managed:
-yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|Raycast|Karabiner-Elements|Karabiner-EventViewer|Music|CleanMyMac X|Surge|WeChat|MediaMate|ProNotes|Navicat Premium|Pritunl)$" manage=off
-yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
-yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
-yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
-yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
-# yabai -m rule --add label="WeChat" app="WeChat" title="^(Video Call.*)$" manage=off
-# yabai -m rule --add label="WeChat" app="WeChat" title="WeChat (Chats)" manage=on
-yabai -m rule --add label="IntelliJ IDEA" app="IntelliJ IDEA" title="(Settings|Create Library)" manage=off
-yabai -m rule --add label="Navicat Premium" app="Navicat Premium" title="Settings" manage=off
-
+yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|Raycast|Karabiner-Elements|Karabiner-EventViewer|Music|CleanMyMac X|Surge|MediaMate|Pritunl)$" manage=off sub-layer=below
+yabai -m rule --add label="Finder" app="^Finder$" manage=off sub-layer=below
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off sub-layer=below
+yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off sub-layer=below
+yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off sub-layer=below
 yabai -m rule --add app="Navicat Premium" title="Navicat Premium" manage=on
-
-yabai -m signal --add event=window_created action="yabai -m query --windows | jq -r '.[0].id' | xargs -I {} yabai -m window --focus {}"
-yabai -m signal --add event=window_destroyed action="yabai -m query --windows --space | jq -r '.[0].id' | xargs -I {} yabai -m window --focus {}"
-# yabai -m window --move abs:100:200
-
-echo "yabai configuration loaded.."
-osascript -e 'display notification "Configuration loaded" with title "Yabai!"'
+yabai -m rule --add app="Parallels Desktop" title="(Configuration|Control Center|Preferences)$" manage=off sub-layer=below
+yabai -m rule --add app="WeChat" title!="^Weixin$" manage=off sub-layer=below
+yabia -m rule --add app="^(MuMu Android Device|MuMuPlayer Pro)$" manage=off sub-layer=below

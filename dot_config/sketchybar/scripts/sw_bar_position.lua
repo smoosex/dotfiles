@@ -23,10 +23,19 @@ M.switch_sketchybar_bar_position = function(bar_position)
 end
 
 M.switch_aerospace_bar_position = function(bar_position)
-  local contrary_bar_position = (bar_position == "top") and "bottom" or "top"
+	local contrary_bar_position = (bar_position == "top") and "bottom" or "top"
 	local home_dir = os.getenv("HOME")
-	local path = home_dir .. "/.local/share/chezmoi/dot_config/aerospace/examples/aerospace_" .. contrary_bar_position .. ".toml"
-  Sbar.exec("cp -f " .. path .. " ~/.local/share/chezmoi/dot_config/aerospace/aerospace.toml")
+	local path = home_dir
+		.. "/.local/share/chezmoi/dot_config/aerospace/examples/aerospace_"
+		.. contrary_bar_position
+		.. ".toml"
+	Sbar.exec("cp -f " .. path .. " ~/.local/share/chezmoi/dot_config/aerospace/aerospace.toml")
+end
+
+M.switch_yabai_bar_position = function(bar_position)
+	local contrary_bar_position = (bar_position == "top") and "0:30" or "30:0"
+	local cmd = "yabai -m config external_bar all:" .. contrary_bar_position
+	Sbar.exec(cmd)
 end
 
 return M

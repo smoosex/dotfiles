@@ -21,7 +21,7 @@ local M = {
 				"java",
 				"svelte",
 				"typescript",
-        "c",
+				"c",
 			},
 
 			incremental_selection = {
@@ -47,17 +47,16 @@ local M = {
 
 			local servers = {
 				"lua_ls",
-				"html",
-				-- "cssls",
 				"marksman",
 				"pyright",
 				"jdtls",
 				"gopls",
 				"vtsls",
 				"vue_ls",
-				"tailwindcss",
 				"svelte",
-        "clangd",
+				"clangd",
+				"biome",
+				"tailwindcss",
 			}
 
 			vim.lsp.config("gopls", {
@@ -124,6 +123,10 @@ local M = {
 				end,
 			})
 
+			vim.lsp.config("biome", {
+				filetypes = { "html", "json", "jsonc" },
+			})
+
 			vim.lsp.enable(servers)
 		end,
 	},
@@ -181,7 +184,7 @@ local M = {
 				jsonc = { "biome" },
 
 				css = { "biome" },
-				html = { "prettier" },
+				html = { "biome" },
 
 				sh = { "shfmt" },
 				yaml = { "yamlfmt" },

@@ -1,6 +1,8 @@
 inoremap jk <Esc>
 nnoremap ; :
 
+syntax on
+
 " if &term =~# 'xterm\|screen\|tmux'
 "   " define mode-switch codes
 "   let &t_SI = "\<Esc>[6 q"
@@ -28,4 +30,3 @@ if &term =~# 'xterm\|screen\|tmux'
   " on exiting Vim’s alternate screen, reset to bar cursor
   let &t_te .= "\<Esc>[6 q"
 endif
-

@@ -18,26 +18,6 @@ local matheme = Sbar.add("item", "matheme", {
 	label = { drawing = false },
 })
 
-local function switch_theme(env)
-	theme_utils.switch_theme(env.NAME)
-end
-
-local function on_hover_item(env)
-	pop_items[env.NAME]:set({
-		background = {
-			color = colors.theme.c3,
-		},
-	})
-end
-
-local function on_hover_leave_item(env)
-	pop_items[env.NAME]:set({
-		background = {
-			drawing = false,
-		},
-	})
-end
-
 local function toggle_theme_picker()
 	animations.base_click_animation(matheme)
 	local drawing = matheme:query().popup.drawing
@@ -59,6 +39,27 @@ end
 matheme:subscribe("mouse.entered", on_hover_theme_picker)
 matheme:subscribe("mouse.exited", on_hover_leave_theme_picker)
 matheme:subscribe("mouse.clicked", toggle_theme_picker)
+
+local function switch_theme(env)
+	toggle_theme_picker()
+	theme_utils.switch_theme(env.NAME)
+end
+
+local function on_hover_item(env)
+	pop_items[env.NAME]:set({
+		background = {
+			color = colors.theme.c3,
+		},
+	})
+end
+
+local function on_hover_leave_item(env)
+	pop_items[env.NAME]:set({
+		background = {
+			drawing = false,
+		},
+	})
+end
 
 for i = 1, #theme_list do
 	local pop_item = Sbar.add("item", theme_list[i], {

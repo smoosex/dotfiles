@@ -26,18 +26,27 @@ local M = {
 		},
 	},
 
+	markdown_preview = {
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+
 	render_markdown = {
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 		opts = {
-			file_types = { "markdown", "Avante" },
+			file_types = { "markdown", "Avante", "codecompanion" },
 			heading = { icons = { "󰼏 ", "󰎨 " }, position = "inline" },
 			preset = "lazy",
 		},
 		config = function()
 			dofile(vim.g.base46_cache .. "render-markdown")
 		end,
-		ft = { "Avante", "codecompanion" },
+		ft = { "markdown", "Avante", "codecompanion" },
 	},
 }
 
