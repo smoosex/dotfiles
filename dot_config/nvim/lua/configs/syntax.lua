@@ -49,6 +49,7 @@ local M = {
 				"lua_ls",
 				"marksman",
 				"pyright",
+				"ruff",
 				"jdtls",
 				"gopls",
 				"vtsls",
@@ -62,6 +63,21 @@ local M = {
 			vim.lsp.config("gopls", {
 				settings = {
 					gopls = { analyses = { modernize = false } },
+				},
+			})
+
+			vim.lsp.config("pyright", {
+				settings = {
+					pyright = {
+						-- Using Ruff's import organizer
+						disableOrganizeImports = true,
+					},
+					python = {
+						analysis = {
+							-- Ignore all files for analysis to exclusively use Ruff for linting
+							ignore = { "*" },
+						},
+					},
 				},
 			})
 
@@ -191,7 +207,7 @@ local M = {
 				toml = { "taplo" },
 
 				go = { "goimports", "goimports-reviser" },
-				python = { "black" },
+				python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
 				java = { "google-java-format" },
 
 				["markdown"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
@@ -275,6 +291,13 @@ local M = {
 				enable_autocmd = false,
 			})
 		end,
+	},
+
+	ts_comment = {
+		"folke/ts-comments.nvim",
+		opts = {},
+		event = { "BufReadPost", "BufNewFile" },
+		enabled = vim.fn.has("nvim-0.10.0") == 1,
 	},
 }
 

@@ -43,7 +43,8 @@ return {
 	-- pretty diagnostics panel
 	require("configs.syntax").trouble,
 	-- nvim-ts-context-commentstring
-	require("configs.syntax").ts_context_comment,
+	-- require("configs.syntax").ts_context_comment,
+	require("configs.syntax").ts_comment,
 	-- parinfer
 	require("configs.syntax").parinfer,
 	-- flash
@@ -82,12 +83,16 @@ return {
 	require("configs.enhancement").im_select,
 	-- hardtime
 	-- require("configs.enhancement").hahrdtime,
+	-- image clip
+	require("configs.enhancement").image_clip,
+	-- image
+	require("configs.enhancement").image,
 
 	-- [[ #################################################################################### ]]
 
 	-- [[ ################################### intergration ################################### ]]
 	-- yazi
-	-- require("configs.intergration").yazi,
+	require("configs.intergration").yazi,
 	-- vim-tmux-navigator
 	require("configs.intergration").tmux,
 	-- chezmoi

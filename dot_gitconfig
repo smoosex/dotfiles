@@ -1,0 +1,9 @@
+[user]
+	name = smoose
+  email = kongzhh1101@gmail.com
+[credential]
+	helper = store
+[url "ssh://git@git.in.yunyisec.com:10578/"]
+	insteadOf = http://git.in.yunyisec.com/
+[init]
+	defaultBranch = main

@@ -48,22 +48,22 @@ local M = {
 		{ import = "nvchad.blink.lazyspec" },
 		{
 			"saghen/blink.cmp",
-			dependencies = {
-				"Kaiser-Yang/blink-cmp-avante",
-			},
+			-- dependencies = {
+			-- 	"Kaiser-Yang/blink-cmp-avante",
+			-- },
 			version = "*",
 			opts = {
 				sources = {
 					-- Add 'avante' to the list
-					default = { "avante", "lsp", "snippets", "buffer", "path" },
+					default = { "lsp", "snippets", "buffer", "path" },
 					providers = {
-						avante = {
-							module = "blink-cmp-avante",
-							name = "Avante",
-							opts = {
-								-- options for blink-cmp-avante
-							},
-						},
+						-- avante = {
+						-- 	module = "blink-cmp-avante",
+						-- 	name = "Avante",
+						-- 	opts = {
+						-- 		-- options for blink-cmp-avante
+						-- 	},
+						-- },
 					},
 				},
 			},

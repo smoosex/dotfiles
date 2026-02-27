@@ -234,6 +234,14 @@ local M = {
 				end,
 				desc = "Detach a CLI Session",
 			},
+      
+      {
+				"<leader>af",
+				function()
+					require("sidekick.cli").focus()
+				end,
+				desc = "Focus Terminal",
+			},
 			{
 				"<leader>at",
 				function()
@@ -243,7 +251,7 @@ local M = {
 				desc = "Send This",
 			},
 			{
-				"<leader>af",
+				"<leader>ab",
 				function()
 					require("sidekick.cli").send({ msg = "{file}" })
 				end,

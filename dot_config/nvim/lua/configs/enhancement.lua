@@ -22,7 +22,7 @@ local M = {
 		"folke/snacks.nvim",
 		-- priority = 1000,
 		opts = {
-			image = {},
+			-- image = {},
 			lazygit = {},
 			scroll = {},
 		},
@@ -40,23 +40,7 @@ local M = {
 	surround = {
 		"kylechui/nvim-surround",
 		event = "BufRead",
-		config = function()
-			require("nvim-surround").setup({
-				keymaps = {
-					insert = false,
-					insert_line = false,
-					normal = false,
-					normal_cur = false,
-					normal_line = false,
-					normal_cur_line = false,
-					visual = "ss",
-					visual_line = "sl",
-					delete = "ds",
-					change = "cs",
-					change_line = "cl",
-				},
-			})
-		end,
+		opts = {},
 	},
 
 	multicursor = {
@@ -192,32 +176,6 @@ local M = {
 		end,
 	},
 
-	{
-		"rachartier/tiny-glimmer.nvim",
-		keys = { "u", "<c-r>" },
-		opts = {
-			overwrite = {
-				redo = {
-					enabled = true,
-					default_animation = {
-						settings = {
-							from_color = "DiffAdd",
-						},
-					},
-				},
-
-				undo = {
-					enabled = true,
-					default_animation = {
-						settings = {
-							from_color = "DiffDelete",
-						},
-					},
-				},
-			},
-		},
-	},
-
 	spectre = {
 		"nvim-pack/nvim-spectre",
 		event = "BufRead",
@@ -289,7 +247,7 @@ local M = {
 	zen = {
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",
-		opts = {}
+		opts = {},
 	},
 
 	floaterm = {
@@ -323,6 +281,50 @@ local M = {
 		opts = {
 			max_count = 30,
 		},
+	},
+
+	image_clip = {
+		"HakonHarnes/img-clip.nvim",
+		opts = {
+			-- add options here
+			-- or leave it empty to use the default settings
+		},
+		keys = {
+			-- suggested keymap
+			{ "<leader>imp", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+		},
+	},
+
+	image = {
+		"3rd/image.nvim",
+		build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
+		opts = {
+			processor = "magick_cli",
+		},
+		keys = {
+			{
+				"<leader>imt",
+				function()
+					local is_toggled = require("image").is_enabled()
+					if is_toggled then
+						require("image").disable()
+					else
+						require("image").enable()
+					end
+				end,
+				desc = "Toggle image",
+			},
+		},
+		config = function()
+			require("image").setup({
+				integrations = {
+					markdown = {
+						only_render_image_at_cursor = true, -- defaults to false
+						only_render_image_at_cursor_mode = "popup", -- "popup" or "inline", defaults to "popup"
+					},
+				},
+			})
+		end,
 	},
 }
 

@@ -30,3 +30,7 @@ alias lg="lazygit"
 # eza
 alias lse="eza --icons"
 alias ll="eza -l --icons"
+
+# tmux
+alias tm="tmux"
+alias tmi="tmuxifier"

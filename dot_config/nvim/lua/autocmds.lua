@@ -66,14 +66,14 @@ autocmd("BufReadPost", {
 })
 
 -- Ts Context Comment
-local orig_get_option = vim.filetype.get_option
-rawset(vim.filetype, "get_option", function(filetype, option)
-	if option == "commentstring" then
-		return require("ts_context_commentstring.internal").calculate_commentstring()
-	else
-		return orig_get_option(filetype, option)
-	end
-end)
+-- local orig_get_option = vim.filetype.get_option
+-- rawset(vim.filetype, "get_option", function(filetype, option)
+-- 	if option == "commentstring" then
+-- 		return require("ts_context_commentstring.internal").calculate_commentstring()
+-- 	else
+-- 		return orig_get_option(filetype, option)
+-- 	end
+-- end)
 
 -- format files on save
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -125,4 +125,20 @@ vim.api.nvim_create_autocmd("ModeChanged", {
 			require("luasnip").unlink_current()
 		end
 	end,
+})
+
+-- ruff hover disable
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client == nil then
+			return
+		end
+		if client.name == "ruff" then
+			-- Disable hover in favor of Pyright
+			client.server_capabilities.hoverProvider = false
+		end
+	end,
+	desc = "LSP: Disable hover capability from Ruff",
 })
