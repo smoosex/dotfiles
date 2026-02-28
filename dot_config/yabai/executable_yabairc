@@ -92,3 +92,5 @@ yabai -m rule --add app="WeChat" title!="^Weixin$" manage=off sub-layer=below
 yabai -m rule --add app="QQ" title!="'QQ" manage=off sub-layer=below
 yabia -m rule --add app="^(MuMu Android Device|MuMuPlayer Pro)$" manage=off sub-layer=below
 yabai -m rule --add app="ChatGPT" manage=off sub-layer=below
+yabai -m rule --add app="Antigravity" title="Settings" manage=off sub-layer=below
+yabai -m rule --add app="CC Switch" manage=off sub-layer=below
