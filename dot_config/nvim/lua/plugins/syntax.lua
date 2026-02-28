@@ -1,5 +1,5 @@
-local M = {
-	treesitter = {
+return {
+	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = {
@@ -34,15 +34,11 @@ local M = {
 				},
 			},
 		},
-		-- config = function(_, opts)
-		--   require("nvim-treesitter.configs").setup(opts)
-		-- end,
 	},
 
-	lspconfig = {
+	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			-- load defaults i.e lua_lsp
 			require("nvchad.configs.lspconfig").defaults()
 
 			local servers = {
@@ -69,12 +65,10 @@ local M = {
 			vim.lsp.config("pyright", {
 				settings = {
 					pyright = {
-						-- Using Ruff's import organizer
 						disableOrganizeImports = true,
 					},
 					python = {
 						analysis = {
-							-- Ignore all files for analysis to exclusively use Ruff for linting
 							ignore = { "*" },
 						},
 					},
@@ -124,7 +118,7 @@ local M = {
 						local param = unpack(result)
 						local id, command, payload = unpack(param)
 						ts_client:exec_cmd({
-							title = "vue_request_forward", -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
+							title = "vue_request_forward",
 							command = "typescript.tsserverRequest",
 							arguments = {
 								command,
@@ -132,7 +126,6 @@ local M = {
 							},
 						}, { bufnr = context.bufnr }, function(_, r)
 							local response_data = { { id, r.body } }
-							---@diagnostic disable-next-line: param-type-mismatch
 							client:notify("tsserver/response", response_data)
 						end)
 					end
@@ -147,18 +140,14 @@ local M = {
 		end,
 	},
 
-	conform = {
+	{
 		"stevearc/conform.nvim",
-		-- event = "BufWritePre",
 		opts = {
-			-- custom formatter
 			formatters = {
 				["goimports-reviser"] = {
 					prepend_args = {
-						-- "-rm-unused",
-						-- "-format",
-						"-separate-named",
-						"-imports-order",
+						"--separate-named",
+						"--imports-order",
 						"std,project,general,company,blanked,dotted",
 					},
 				},
@@ -189,7 +178,6 @@ local M = {
 			formatters_by_ft = {
 				lua = { "stylua" },
 
-				-- webdev
 				javascript = { "biome" },
 				javascriptreact = { "biome" },
 				typescript = { "biome" },
@@ -213,12 +201,6 @@ local M = {
 				["markdown"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
 				["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
 			},
-
-			-- format_on_save = {
-			--     -- These options will be passed to conform.format()
-			--     timeout_ms = 5000,
-			--     lsp_fallback = true,
-			-- },
 		},
 
 		keys = {
@@ -236,7 +218,7 @@ local M = {
 		},
 	},
 
-	trouble = {
+	{
 		"folke/trouble.nvim",
 		opts = {},
 		cmd = "Trouble",
@@ -278,27 +260,15 @@ local M = {
 		end,
 	},
 
-	parinfer = {
+	{
 		"gpanders/nvim-parinfer",
 		event = "InsertEnter",
 	},
 
-	ts_context_comment = {
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("ts_context_commentstring").setup({
-				enable_autocmd = false,
-			})
-		end,
-	},
-
-	ts_comment = {
+	{
 		"folke/ts-comments.nvim",
 		opts = {},
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = vim.fn.has("nvim-0.10.0") == 1,
 	},
 }
-
-return M

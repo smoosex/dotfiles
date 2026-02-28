@@ -1,5 +1,5 @@
-local M = {
-	telescope = {
+return {
+	{
 		"nvim-telescope/telescope.nvim",
 		opts = {
 			extensions = {
@@ -9,19 +9,15 @@ local M = {
 					override_file_sorter = true,
 					case_mode = "smart_case",
 				},
-
-				-- media = { backend = "ueberzug" },
 			},
 		},
 
 		dependencies = {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-			-- "2kabhishek/nerdy.nvim",
-			-- "dharmx/telescope-media.nvim",
 		},
 	},
 
-	todo_comments = {
+	{
 		"folke/todo-comments.nvim",
 		event = "BufRead",
 		config = function()
@@ -30,5 +26,3 @@ local M = {
 		end,
 	},
 }
-
-return M

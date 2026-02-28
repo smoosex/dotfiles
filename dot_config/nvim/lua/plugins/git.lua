@@ -1,5 +1,5 @@
-local M = {
-	gitsigns = {
+return {
+	{
 		"lewis6991/gitsigns.nvim",
 		event = "User FilePost",
 		opts = {
@@ -14,7 +14,6 @@ local M = {
 					vim.keymap.set(mode, l, r, opts)
 				end
 
-				-- Navigation
 				map("n", "]c", function()
 					if vim.wo.diff then
 						vim.cmd.normal({ "]c", bang = true })
@@ -31,7 +30,6 @@ local M = {
 					end
 				end, { desc = "Git Prev Hunk" })
 
-				-- Actions
 				map("n", "<leader>gs", gitsigns.stage_hunk, { desc = "Git Stage Hunk" })
 				map("n", "<leader>gu", gitsigns.undo_stage_hunk, { desc = "Git Undo Stage Hunk" })
 				map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "Git Reset Hunk" })
@@ -61,42 +59,30 @@ local M = {
 					end, { buffer = b, noremap = true, silent = true })
 				end, { desc = "Git Blame" })
 
-				-- map("n", "<leader>gd", gitsigns.diffthis, { desc = "Git Diff This" })
-				--
-				-- map("n", "<leader>gD", function()
-				-- 	gitsigns.diffthis("~")
-				-- end, { desc = "Git Diff This ~" })
-
 				map("n", "<leader>gQ", function()
 					gitsigns.setqflist("all")
 				end, { desc = "Git Set Quickfixlist for Whole Buffer" })
 				map("n", "<leader>gq", gitsigns.setqflist, { desc = "Git Set Quickfixlist" })
 
-				-- Toggles
 				map("n", "<leader>gtb", gitsigns.toggle_current_line_blame, { desc = "Git Toggle Current Line Blame" })
 				map("n", "<leader>gtd", gitsigns.toggle_deleted, { desc = "Git Toggle Deleted" })
 				map("n", "<leader>gtw", gitsigns.toggle_word_diff, { desc = "Git Toggle Word Diff" })
 				map("n", "<leader>gtl", gitsigns.toggle_linehl, { desc = "Git Toggle Hightlight Add Line" })
 
-				-- Text object
 				map({ "o", "x" }, "ih", gitsigns.select_hunk)
 			end,
 		},
 	},
-	diffview = {
+	{
 		"sindrets/diffview.nvim",
 		event = "User FilePost",
 		keys = {
-		    -- stylua: ignore start
-		    { mode = "n", "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open", },
-		    { mode = "n", "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "Diffview Close", },
-		    { mode = "n", "<leader>gdf", "<cmd>DiffviewFileHistory<cr>", desc = "Diffview File History", },
-		    { mode = "n", "<leader>gdF", "<cmd>DiffviewFileHistory --follow %<cr>", desc = "Diffview Current File History", },
-		    { mode = "v", "<leader>gds", "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = "Diffview Selected Content History", },
-		    { mode = "n", "<leader>gdl", "<Cmd>.DiffviewFileHistory --follow<CR>", desc = "Diffview Single Line History", },
-			-- stylua: ignore end
+			{ mode = "n", "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open", },
+			{ mode = "n", "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "Diffview Close", },
+			{ mode = "n", "<leader>gdf", "<cmd>DiffviewFileHistory<cr>", desc = "Diffview File History", },
+			{ mode = "n", "<leader>gdF", "<cmd>DiffviewFileHistory --follow %<cr>", desc = "Diffview Current File History", },
+			{ mode = "v", "<leader>gds", "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = "Diffview Selected Content History", },
+			{ mode = "n", "<leader>gdl", "<Cmd>.DiffviewFileHistory --follow<CR>", desc = "Diffview Single Line History", },
 		},
 	},
 }
-
-return M

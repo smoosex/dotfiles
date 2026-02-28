@@ -1,52 +1,44 @@
-local M = {
-	flash = {
+return {
+	{
 		"folke/flash.nvim",
 		opts = {},
-        -- stylua: ignore
-        keys = {
-            { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-            { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-            { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-            { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-            { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-        },
+		keys = {
+			{ "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+			{ "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+			{ "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+		},
 		config = function()
 			dofile(vim.g.base46_cache .. "flash")
-			require("flash").setup({
-				-- your custom config here (optional)
-			})
+			require("flash").setup({})
 		end,
 	},
 
-	snack = {
+	{
 		"folke/snacks.nvim",
-		-- priority = 1000,
 		opts = {
-			-- image = {},
 			lazygit = {},
 			scroll = {},
 		},
 		keys = {
-      -- stylua: ignore start 
-      { "<leader>lg", function() require("snacks").lazygit() end, desc = "LazyGit", },
-      {"gg"},
-      {"G"},
-      { "<c-d>"},
-      {"<c-u>" },
-			-- stylua: ignore end
+			{ "<leader>lg", function() require("snacks").lazygit() end, desc = "LazyGit", },
+			{"gg"},
+			{"G"},
+			{ "<c-d>"},
+			{"<c-u>" },
 		},
 	},
 
-	surround = {
+	{
 		"kylechui/nvim-surround",
 		event = "BufRead",
 		opts = {},
 	},
 
-	multicursor = {
+	{
 		"jake-stewart/multicursor.nvim",
 		keys = {
-			-- -- Add cursor in current cursor
 			{
 				"<leader>mi",
 				function()
@@ -54,7 +46,6 @@ local M = {
 				end,
 				desc = "Multicursor: Add or remove a cursor in current",
 			},
-			-- -- Add or skip cursor above/below the main cursor
 			{
 				mode = { "n", "x" },
 				"<leader>mk",
@@ -87,7 +78,6 @@ local M = {
 				end,
 				desc = "Multicursor: Skip cursor below the main cursor",
 			},
-			-- Add or skip adding a new cursor by matching word/selection
 			{
 				mode = { "n", "x" },
 				"<leader>mw",
@@ -120,7 +110,6 @@ local M = {
 				end,
 				desc = "Multicursor: Skip adding a new cursor by previous matching word/selection",
 			},
-			-- Add and remove cursors with control + left click.
 			{
 				"<c-leftmouse>",
 				function()
@@ -144,17 +133,10 @@ local M = {
 			local mc = require("multicursor-nvim")
 			mc.setup()
 
-			-- Mappings defined in a keymap layer only apply when there are
-			-- multiple cursors. This lets you have overlapping mappings.
 			mc.addKeymapLayer(function(layerSet)
-				-- Select a different cursor as the main one.
 				layerSet({ "n", "x" }, "<left>", mc.prevCursor)
 				layerSet({ "n", "x" }, "<right>", mc.nextCursor)
-
-				-- Delete the main cursor.
 				layerSet({ "n", "x" }, "<leader>x", mc.deleteCursor)
-
-				-- Enable and clear cursors using escape.
 				layerSet("n", "<esc>", function()
 					if not mc.cursorsEnabled() then
 						mc.enableCursors()
@@ -164,7 +146,6 @@ local M = {
 				end)
 			end)
 
-			-- Customize how cursors look.
 			local hl = vim.api.nvim_set_hl
 			hl(0, "MultiCursorCursor", { link = "Cursor" })
 			hl(0, "MultiCursorVisual", { link = "Visual" })
@@ -176,7 +157,7 @@ local M = {
 		end,
 	},
 
-	spectre = {
+	{
 		"nvim-pack/nvim-spectre",
 		event = "BufRead",
 		keys = {
@@ -184,33 +165,25 @@ local M = {
 				mode = "n",
 				"<leader>S",
 				'<cmd>lua require("spectre").toggle()<CR>',
-				{
-					desc = "Toggle Spectre",
-				},
+				{ desc = "Toggle Spectre", },
 			},
 			{
 				mode = "n",
 				"<leader>sw",
 				'<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
-				{
-					desc = "Search current word",
-				},
+				{ desc = "Search current word", },
 			},
 			{
 				mode = "v",
 				"<leader>sw",
 				'<esc><cmd>lua require("spectre").open_visual()<CR>',
-				{
-					desc = "Search current word",
-				},
+				{ desc = "Search current word", },
 			},
 			{
 				mode = { "n", "v" },
 				"<leader>sp",
 				'<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
-				{
-					desc = "Search on current file",
-				},
+				{ desc = "Search on current file", },
 			},
 		},
 		config = function()
@@ -218,7 +191,7 @@ local M = {
 		end,
 	},
 
-	glimmer = {
+	{
 		"rachartier/tiny-glimmer.nvim",
 		keys = { "u", "<c-r>" },
 		opts = {
@@ -244,27 +217,25 @@ local M = {
 		},
 	},
 
-	zen = {
+	{
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",
 		opts = {},
 	},
 
-	floaterm = {
+	{
 		"nvzone/floaterm",
 		dependencies = "nvzone/volt",
 		opts = {
 			terminals = {
 				{ name = "Terminal" },
-				-- cmd can be function too
 				{ name = "Terminal" },
-				-- More terminals
 			},
 		},
 		cmd = "FloatermToggle",
 	},
 
-	im_select = {
+	{
 		"SilverofLight/im-select.nvim",
 		event = "VeryLazy",
 		config = function()
@@ -274,30 +245,17 @@ local M = {
 		end,
 	},
 
-	hahrdtime = {
-		"m4xshen/hardtime.nvim",
-		cmd = "Hardtime",
-		dependencies = { "MunifTanjim/nui.nvim" },
-		opts = {
-			max_count = 30,
-		},
-	},
-
-	image_clip = {
+	{
 		"HakonHarnes/img-clip.nvim",
-		opts = {
-			-- add options here
-			-- or leave it empty to use the default settings
-		},
+		opts = {},
 		keys = {
-			-- suggested keymap
 			{ "<leader>imp", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
 		},
 	},
 
-	image = {
+	{
 		"3rd/image.nvim",
-		build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
+		build = false,
 		opts = {
 			processor = "magick_cli",
 		},
@@ -319,13 +277,11 @@ local M = {
 			require("image").setup({
 				integrations = {
 					markdown = {
-						only_render_image_at_cursor = true, -- defaults to false
-						only_render_image_at_cursor_mode = "popup", -- "popup" or "inline", defaults to "popup"
+						only_render_image_at_cursor = true,
+						only_render_image_at_cursor_mode = "popup",
 					},
 				},
 			})
 		end,
 	},
 }
-
-return M
