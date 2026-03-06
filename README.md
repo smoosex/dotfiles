@@ -17,3 +17,6 @@ My dotfiles for MacOS, support switching themes.
 - Kitty
 - Aerospace
 - Tmux
+
+## Notes
+- If you copy the `SketchyBar` config, make sure `sbarlua` is built against `Lua 5.4` and `sketchybarrc` uses a `Lua 5.4` interpreter. A mismatched Lua version can make the bar fail to render.
