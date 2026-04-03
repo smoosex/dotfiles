@@ -7,8 +7,17 @@ local spaces = {}
 
 local draw_spaces = function()
 	Sbar.exec("yabai -m query --spaces", function(result, _)
+		if type(result) ~= "table" then
+			return
+		end
+
 		for _, ws in ipairs(result) do
-			local ws_name = ws.label .. "-" .. tostring(ws.index)
+			if type(ws) ~= "table" or ws.index == nil then
+				goto continue
+			end
+
+			local label = ws.label or "space"
+			local ws_name = label .. "-" .. tostring(ws.index)
 			local is_focused = ws["has-focus"]
 			local space = Sbar.add("item", ws_name, {
 				icon = {
@@ -48,6 +57,8 @@ local draw_spaces = function()
 			space:subscribe("mouse.exited", function()
 				animations.base_leave_hover_animation(space)
 			end)
+
+			::continue::
 		end
 	end)
 end
@@ -63,14 +74,30 @@ local space_subscriber = Sbar.add("item", {
 
 space_subscriber:subscribe("yabai_space_change", function(_)
 	Sbar.exec("yabai -m query --spaces", function(result, _)
+		if type(result) ~= "table" then
+			return
+		end
+
 		for _, ws in ipairs(result) do
-			local ws_name = ws.label .. "-" .. tostring(ws.index)
-			spaces[ws_name]:set({
+			if type(ws) ~= "table" or ws.index == nil then
+				goto continue
+			end
+
+			local label = ws.label or "space"
+			local ws_name = label .. "-" .. tostring(ws.index)
+			local space = spaces[ws_name]
+			if space == nil then
+				goto continue
+			end
+
+			space:set({
 				icon = {
 					string = ws["has-focus"] and icons.focused_space or icons.space,
 					color = ws["has-focus"] and colors.theme.c8 or colors.theme.fg,
 				},
 			})
+
+			::continue::
 		end
 	end)
 end)

@@ -1,9 +1,8 @@
 config:
-  fallback-icon: "?"
+  fallback-icon: ""
   multi-pane-icon: ""
   show-name: true
   always-show-fallback-name: false
   icon-position: "left"
 icons:
-  # zsh: ""
   cmatrix: "🤯"
