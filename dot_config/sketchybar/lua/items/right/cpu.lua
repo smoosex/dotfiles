@@ -49,7 +49,7 @@ cpu:subscribe("cpu_update", function(env)
 			color = color,
 		},
 		label = {
-			string = ration * 100 .. "%",
+			string = string.format("%.2f%%", ration * 100),
 		},
 	})
 end)

@@ -26,7 +26,7 @@ yabai -m config \
   window_opacity on \
   window_opacity_duration 0.2 \
   active_window_opacity 1.0 \
-  normal_window_opacity 0.80 \
+  normal_window_opacity 0.90 \
   window_animation_duration 0.5 \
   window_animation_easing ease_out_quint \
   insert_feedback_color 0xff000000 \
@@ -82,7 +82,7 @@ yabai -m rule --add app="^(Safari|Zen|Brave|Google Chrome|Chromium|Firefox|Vival
 yabai -m rule --add app="^(Mail|WeChat|Feishu|Discord|QQ)$" space=^communication
 
 # Exclude problematic apps from being managed:
-yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|Raycast|Karabiner-Elements|Karabiner-EventViewer|Music|CleanMyMac X|Surge|MediaMate|Pritunl|Claude|Surge Dashboard)$" manage=off sub-layer=below
+yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|Raycast|Karabiner-Elements|Karabiner-EventViewer|Music|CleanMyMac|Surge|MediaMate|Pritunl|Claude|Surge Dashboard|Preview|Quantumult X)$" manage=off sub-layer=below
 yabai -m rule --add label="Finder" app="^Finder$" manage=off sub-layer=below
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off sub-layer=below
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off sub-layer=below

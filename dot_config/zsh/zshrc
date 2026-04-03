@@ -51,5 +51,6 @@ eval "$(tmuxifier init -)"
 eval "$(starship init zsh)"
 eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
+eval "$(codex completion zsh)"
 
 fastfetch

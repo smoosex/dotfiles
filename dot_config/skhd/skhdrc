@@ -22,9 +22,8 @@ hyper - 8 : yabai -m space --focus 8
 hyper - 9 : yabai -m space --focus 9
 
 # Display Navigation
-hyper - i : yabai -m display --focus recent
-# cmd + shift - p : yabai -m space --focus prev
-# cmd + shift - n : yabai -m space --focus next
+hyper - s : yabai -m space --display recent
+hyper - f : yabai -m display --focus recent
 
 # ╭──────────────────────────────────────────────────────────╮
 # │                    Windows Movement                      │
