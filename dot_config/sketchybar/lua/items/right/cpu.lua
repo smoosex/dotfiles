@@ -12,7 +12,7 @@ local cpu = Sbar.add("item", "cpu", {
 	icon = {
 		string = icons.cpu,
 		color = colors.theme.c8,
-		background = { color = colors.theme.c3, height = settings.item_height, border_width = 0, corner_radius = 6 },
+		background = { color = colors.theme.c1, height = settings.item_height, border_width = 0, corner_radius = 6 },
 	},
 	label = {
 		string = "??%",

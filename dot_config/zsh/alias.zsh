@@ -34,3 +34,6 @@ alias ll="eza -l --icons"
 # tmux
 alias tm="tmux"
 alias tmi="tmuxifier"
+
+# pi
+alias pic="cd /Users/smoose/Documents/pi-chats && pi"

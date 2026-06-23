@@ -3,11 +3,46 @@ return {
 		"folke/flash.nvim",
 		opts = {},
 		keys = {
-			{ "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-			{ "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-			{ "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+			{
+				"S",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+			{
+				"r",
+				mode = "o",
+				function()
+					require("flash").remote()
+				end,
+				desc = "Remote Flash",
+			},
+			{
+				"R",
+				mode = { "o", "x" },
+				function()
+					require("flash").treesitter_search()
+				end,
+				desc = "Treesitter Search",
+			},
+			{
+				"<c-s>",
+				mode = { "c" },
+				function()
+					require("flash").toggle()
+				end,
+				desc = "Toggle Flash Search",
+			},
 		},
 		config = function()
 			dofile(vim.g.base46_cache .. "flash")
@@ -22,11 +57,17 @@ return {
 			scroll = {},
 		},
 		keys = {
-			{ "<leader>lg", function() require("snacks").lazygit() end, desc = "LazyGit", },
-			{"gg"},
-			{"G"},
-			{ "<c-d>"},
-			{"<c-u>" },
+			{
+				"<leader>lg",
+				function()
+					require("snacks").lazygit()
+				end,
+				desc = "LazyGit",
+			},
+			{ "gg" },
+			{ "G" },
+			{ "<c-d>" },
+			{ "<c-u>" },
 		},
 	},
 
@@ -165,25 +206,25 @@ return {
 				mode = "n",
 				"<leader>S",
 				'<cmd>lua require("spectre").toggle()<CR>',
-				{ desc = "Toggle Spectre", },
+				{ desc = "Toggle Spectre" },
 			},
 			{
 				mode = "n",
 				"<leader>sw",
 				'<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
-				{ desc = "Search current word", },
+				{ desc = "Search current word" },
 			},
 			{
 				mode = "v",
 				"<leader>sw",
 				'<esc><cmd>lua require("spectre").open_visual()<CR>',
-				{ desc = "Search current word", },
+				{ desc = "Search current word" },
 			},
 			{
 				mode = { "n", "v" },
 				"<leader>sp",
 				'<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
-				{ desc = "Search on current file", },
+				{ desc = "Search on current file" },
 			},
 		},
 		config = function()
@@ -233,55 +274,5 @@ return {
 			},
 		},
 		cmd = "FloatermToggle",
-	},
-
-	{
-		"SilverofLight/im-select.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("im_select").setup({
-				hybrid_mode = true,
-			})
-		end,
-	},
-
-	{
-		"HakonHarnes/img-clip.nvim",
-		opts = {},
-		keys = {
-			{ "<leader>imp", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
-		},
-	},
-
-	{
-		"3rd/image.nvim",
-		build = false,
-		opts = {
-			processor = "magick_cli",
-		},
-		keys = {
-			{
-				"<leader>imt",
-				function()
-					local is_toggled = require("image").is_enabled()
-					if is_toggled then
-						require("image").disable()
-					else
-						require("image").enable()
-					end
-				end,
-				desc = "Toggle image",
-			},
-		},
-		config = function()
-			require("image").setup({
-				integrations = {
-					markdown = {
-						only_render_image_at_cursor = true,
-						only_render_image_at_cursor_mode = "popup",
-					},
-				},
-			})
-		end,
 	},
 }

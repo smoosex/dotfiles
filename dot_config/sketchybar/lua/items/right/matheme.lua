@@ -6,7 +6,7 @@ local theme_utils = require("helpers.theme.utils")
 
 local theme_list = theme_utils.get_matheme_list()
 
-local popup_width = 150
+local popup_width = 160
 local pop_items = {} -- 存放 popup 子项的引用
 
 local matheme = Sbar.add("item", "matheme", {

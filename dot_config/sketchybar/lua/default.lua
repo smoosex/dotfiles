@@ -37,9 +37,9 @@ Sbar.default({
 	},
 	popup = {
 		background = {
-			border_width = 0,
+			border_width = 1,
 			corner_radius = 6,
-			border_color = colors.theme.c1,
+			border_color = colors.theme.c3,
 			color = colors.theme.bg,
 			shadow = { drawing = false },
 		},
