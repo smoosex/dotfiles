@@ -17,7 +17,13 @@ local function parse_with_regex()
   h:close()
 
   local mode = match(txt, '"Input Mode"%s*=%s*"com%.apple%.inputmethod%.SCIM%.([^"]+)"')
-           or match(txt, '"KeyboardLayout Name"%s*=%s*"?([^";]-)"?;')
+  if mode and #mode > 0 then return trim(mode) end
+
+  if txt:match('"Input Mode"%s*=%s*"im%.rime%.inputmethod%.Squirrel') then
+    return "Squirrel"
+  end
+
+  mode = match(txt, '"KeyboardLayout Name"%s*=%s*"?([^";]-)"?;')
   return mode and trim(mode) or ""
 end
 
@@ -51,9 +57,13 @@ function M.parse_input_source()
 
   for _, entry in ipairs(sources) do
     if entry["Input Mode"] then
-      local m = entry["Input Mode"]:match("com%.apple%.inputmethod%.SCIM%.(.+)")
+      local im = entry["Input Mode"]
+      local m = im:match("com%.apple%.inputmethod%.SCIM%.(.+)")
       if m and #m > 0 then
         return trim(m)
+      end
+      if im:match("im%.rime%.inputmethod%.Squirrel") then
+        return "Squirrel"
       end
     elseif entry["KeyboardLayout Name"] then
       return trim(entry["KeyboardLayout Name"])

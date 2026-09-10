@@ -21,6 +21,7 @@ source <(fzf --zsh)
 
 bindkey '\C-y' autosuggest-accept
 
+export PATH="$HOME/.local/bin:$PATH"
 . "/Users/smoose/.deno/env"
 
 export PATH="/Users/smoose/.local/share/tmux/plugins/tmuxifier/bin:$PATH"
