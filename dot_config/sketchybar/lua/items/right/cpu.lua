@@ -7,23 +7,62 @@ local animations = require("animations")
 -- the cpu load data, which is fired every 2.0 seconds.
 Sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 2.0")
 
-local cpu = Sbar.add("item", "cpu", {
+Sbar.add("item", "cpu.padding.right", {
 	position = "right",
-	icon = {
-		string = icons.cpu,
-		color = colors.theme.c8,
-		background = { color = colors.theme.c1, height = settings.item_height, border_width = 0, corner_radius = 6 },
-	},
+	width = settings.group_paddings,
+	icon = { drawing = false },
+	label = { drawing = false },
+	background = { drawing = false },
+})
+
+local cpu_label = Sbar.add("item", "cpu.label", {
+	position = "right",
+	padding_left = 0,
+	padding_right = 0,
 	label = {
 		string = "??%",
 		font = {
 			size = 12.0,
 		},
 	},
+	width = 50,
+	background = { drawing = false },
 })
 
+local cpu_icon = Sbar.add("item", "cpu.icon", {
+	position = "right",
+	padding_left = 0,
+	padding_right = 0,
+	icon = {
+		string = icons.cpu,
+		color = colors.theme.c8,
+	},
+	label = { drawing = false },
+	background = {
+		color = colors.theme.c1,
+		shadow = {
+			distance = 3,
+			angle = 0,
+		},
+	},
+})
 
-cpu:subscribe("cpu_update", function(env)
+local cpu = Sbar.add("bracket", "bracket.cpu", {
+	cpu_icon.name,
+	cpu_label.name,
+}, {
+	background = { color = colors.theme.c2 },
+})
+
+Sbar.add("item", "cpu.padding.left", {
+	position = "right",
+	width = settings.group_paddings,
+	icon = { drawing = false },
+	label = { drawing = false },
+	background = { drawing = false },
+})
+
+cpu_label:subscribe("cpu_update", function(env)
 	local load = tonumber(env.total_load)
 	local ration = load / 100.
 	if ration > 1 then
@@ -44,7 +83,7 @@ cpu:subscribe("cpu_update", function(env)
 		end
 	end
 
-	cpu:set({
+	cpu_label:set({
 		icon = {
 			color = color,
 		},
@@ -55,11 +94,6 @@ cpu:subscribe("cpu_update", function(env)
 end)
 
 cpu:subscribe("mouse.clicked", function()
-  animations.base_click_animation(cpu)
+	animations.base_click_animation(cpu)
 	Sbar.exec("open -a 'Activity Monitor'")
 end)
-
--- Sbar.add("alias", "TextInputMenuAgent,Item-0", {
--- 	position = "right",
--- 	alias = { color = colors.theme.c8, scale = 0.8 },
--- })

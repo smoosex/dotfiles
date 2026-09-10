@@ -52,10 +52,11 @@ local icons = {
 	wifi = {
 		upload = "",
 		download = "",
+    up_down = "󱚻",
 		connected = "󰖩",
 		disconnected = "󰖪",
 		router = "󰑩",
-		vpn = "󰌾",
+		vpn = "󱚿",
 	},
 	media = {
 		back = "",
