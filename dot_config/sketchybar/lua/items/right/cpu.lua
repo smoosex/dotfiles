@@ -20,12 +20,12 @@ local cpu_label = Sbar.add("item", "cpu.label", {
 	padding_left = 0,
 	padding_right = 0,
 	label = {
-		string = "??%",
+		string = "󱗼󱗼󱗼 %",
 		font = {
 			size = 12.0,
 		},
 	},
-	width = 50,
+	width = 54,
 	background = { drawing = false },
 })
 
@@ -93,7 +93,11 @@ cpu_label:subscribe("cpu_update", function(env)
 	})
 end)
 
-cpu:subscribe("mouse.clicked", function()
-	animations.base_click_animation(cpu)
+cpu_icon:subscribe("mouse.clicked", function()
+	animations.custom_animaiton(cpu_icon, settings.base_animation, settings.base_animation_duration, {
+		y_offset = -2,
+	}, {
+		y_offset = 0,
+	})
 	Sbar.exec("open -a 'Activity Monitor'")
 end)

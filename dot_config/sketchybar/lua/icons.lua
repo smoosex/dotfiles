@@ -14,7 +14,7 @@ local icons = {
   input_source = {
     ABC = "󰬈",
     ITABC = "󰏬",
-    Squirrel = "",
+    Squirrel = "󰏬",
   },
 
   number = {
