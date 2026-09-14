@@ -10,6 +10,10 @@ local common_settings = {
 	base_animation = "sin",
 	base_animation_duration = 8,
 
+	notch = false,
+	notch_width = 200,
+	notch_offset = 0,
+
 	font = {
 		text = "Maple Mono NF CN", -- Used for text
 		numbers = "Maple Mono NF CN", -- Used for numbers
@@ -27,6 +31,8 @@ local common_settings = {
 local top_bar_settings_addon = {
   bar_height = 30,
 	item_height = 22,
+
+	notch = true,
 
 	bar_position = "top",
 	bar_margin = 8,

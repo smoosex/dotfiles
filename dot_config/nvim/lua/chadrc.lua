@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-    theme = "everforest_light",
+    theme = "one_light",
     -- transparency = true,
     hl_add = {
         SupermavenRunning = { fg = "#66c13e" },
