@@ -1,3 +1,5 @@
+local colors = require("colors")
+
 local icons = require("icons")
 local animations = require("animations")
 local settings = require("settings")
@@ -9,6 +11,7 @@ local switch_bar = Sbar.add("item", "switch_bar", {
 	position = "right",
 	icon = {
 		string = icons.switch_bar,
+    color = colors.theme.c6,
 	},
 	label = {
 		drawing = false,

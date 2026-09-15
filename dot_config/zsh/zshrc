@@ -1,7 +1,10 @@
 # prevent various problems related to keybindings caused by the plugin sourcing sequenc
 # completions from brew
 autoload -Uz compinit
-compinit
+zcd="${ZDOTDIR:-$HOME}/.zcompdump"
+compinit -d "$zcd"
+[[ -f "$zcd.zwc" && "$zcd" -nt "$zcd.zwc" ]] || zcompile "$zcd" 2>/dev/null
+unset zcd
 
 # yazi shell wrapper
 function y() {
@@ -34,8 +37,14 @@ export CPPFLAGS="-I/opt/homebrew/include"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.config/tmux/layouts"
 
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# 补全文件开头会 command -v nvm，查不到就直接 return，所以先放个占位
+nvm() { : }
+. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+nvm() {
+  unfunction nvm
+  \. "/opt/homebrew/opt/nvm/nvm.sh"
+  nvm "$@"
+}
 
 # bun completions
 [ -s "/Users/smoose/.bun/_bun" ] && source "/Users/smoose/.bun/_bun"
@@ -48,10 +57,15 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH=/Users/smoose/.opencode/bin:$PATH
 export OPENCODE_ENABLE_EXA=1
 
-eval "$(tmuxifier init -)"
+export TMUXIFIER="$HOME/.local/share/tmux/plugins/tmuxifier"
+source "$TMUXIFIER/init.sh"
 eval "$(starship init zsh)"
-eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
-eval "$(codex completion zsh)"
+
+fuck() {
+  unfunction fuck
+  eval "$(thefuck --alias)"
+  fuck "$@"
+}
 
 fastfetch

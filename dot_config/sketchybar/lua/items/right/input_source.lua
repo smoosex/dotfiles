@@ -1,7 +1,7 @@
+local colors = require("colors")
 local input_source_util = require("parse_input_source")
 local icons = require("icons")
 local settings = require("settings")
-
 
 local input_source = input_source_util.parse_input_source()
 local input_source_icon = icons.input_source[input_source]
@@ -10,6 +10,7 @@ local input_source_item = Sbar.add("item", "input_source", {
 	position = "right",
 	icon = {
 		string = input_source_icon,
+		color = colors.theme.c6,
 		font = {
 			family = settings.font.text,
 			style = settings.font.style_map["Bold"],
@@ -25,9 +26,9 @@ Sbar.add("event", "input_source_change", "AppleSelectedInputSourcesChangedNotifi
 input_source_item:subscribe("input_source_change", function()
 	local cur_input_source = input_source_util.parse_input_source()
 	local cur_input_source_icon = icons.input_source[cur_input_source]
-	 input_source_item:set({
-	   icon = {
-	     string = cur_input_source_icon,
-	   }
-	 })
+	input_source_item:set({
+		icon = {
+			string = cur_input_source_icon,
+		},
+	})
 end)

@@ -13,7 +13,7 @@ local matheme = Sbar.add("item", "matheme", {
 	position = "right",
 	icon = {
 		string = icons.palette,
-		color = colors.theme.c7,
+		color = colors.theme.c6,
 	},
 	label = { drawing = false },
 })
@@ -32,7 +32,7 @@ end
 
 local function on_hover_leave_theme_picker()
 	Sbar.animate(settings.base_animation, settings.base_animation_duration, function()
-		matheme:set({ icon = { color = colors.theme.c7 }, background = { color = colors.theme.c2 } })
+		matheme:set({ icon = { color = colors.theme.c6 }, background = { color = colors.theme.c2 } })
 	end)
 end
 
