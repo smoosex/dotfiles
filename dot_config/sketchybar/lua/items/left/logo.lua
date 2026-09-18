@@ -3,7 +3,7 @@ local icons = require("icons")
 local settings = require("settings")
 local animations = require("animations")
 
-local logo = Sbar.add("item", {
+local logo = Sbar.add("item", "logo", {
 	icon = {
 		string = icons.arch,
 		color = colors.theme.c10,

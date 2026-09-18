@@ -54,7 +54,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # opencode
-export PATH=/Users/smoose/.opencode/bin:$PATH
 export OPENCODE_ENABLE_EXA=1
 
 export TMUXIFIER="$HOME/.local/share/tmux/plugins/tmuxifier"

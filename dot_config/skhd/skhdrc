@@ -11,15 +11,15 @@ hyper - l : yabai -m window --focus east || skhd -k "ctrl - right" || yabai -m d
 hyper - 0x29 : yabai -m space --focus recent # Focus the last space
 hyper - 0x21 : skhd -k "ctrl - left"
 hyper - 0x1E : skhd -k "ctrl - right"
-hyper - u : yabai -m space --focus 1
-hyper - i : yabai -m space --focus 2
-hyper - o : yabai -m space --focus 3
-hyper - p : yabai -m space --focus 4
-hyper - 5 : yabai -m space --focus 5
-hyper - 6 : yabai -m space --focus 6
-hyper - 7 : yabai -m space --focus 7
-hyper - 8 : yabai -m space --focus 8
-hyper - 9 : yabai -m space --focus 9
+hyper - u : skhd -k "ctrl - 1"
+hyper - i : skhd -k "ctrl - 2"
+hyper - o : skhd -k "ctrl - 3"
+hyper - p : skhd -k "ctrl - 4"
+hyper - 5 : skhd -k "ctrl - 5"
+hyper - 6 : skhd -k "ctrl - 6"
+hyper - 7 : skhd -k "ctrl - 7"
+hyper - 8 : skhd -k "ctrl - 8"
+hyper - 9 : skhd -k "ctrl - 9"
 
 # Display Navigation
 hyper - s : yabai -m space --display recent
