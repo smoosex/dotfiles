@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ $# -ne 2 ]; then
+  echo "usage: $(basename "$0") <width> <height>" >&2
+  exit 1
+fi
+
+aerospace layout floating
+pid=$(aerospace list-windows --focused --format '%{app-pid}')
+
+osascript -l JavaScript -e '
+ObjC.import("AppKit");
+
+function run(argv) {
+  const pid = Number(argv[0]);
+  const w = Number(argv[1]);
+  const h = Number(argv[2]);
+
+  const se = Application("System Events");
+  const win = se.processes.whose({ unixId: pid })[0].windows[0];
+
+  const [x, y] = win.position();
+  const [cw, ch] = win.size();
+
+  const screens = $.NSScreen.screens;
+  const mainH = screens.objectAtIndex(0).frame.size.height;
+
+  let target = null;
+  for (let i = 0; i < screens.count; i++) {
+    const f = screens.objectAtIndex(i).frame;
+    const ax = { x: f.origin.x, y: mainH - (f.origin.y + f.size.height), w: f.size.width, h: f.size.height };
+    const inX = x + cw / 2 >= ax.x && x + cw / 2 < ax.x + ax.w;
+    const inY = y + ch / 2 >= ax.y && y + ch / 2 < ax.y + ax.h;
+    if (inX && inY) {
+      target = ax;
+      break;
+    }
+  }
+  if (!target) {
+    const f = screens.objectAtIndex(0).frame;
+    target = { x: 0, y: 0, w: f.size.width, h: f.size.height };
+  }
+
+  const nw = Math.min(w, target.w);
+  const nh = Math.min(h, target.h);
+  win.position = [Math.round(target.x + (target.w - nw) / 2), Math.round(target.y + (target.h - nh) / 2)];
+  win.size = [nw, nh];
+}' -- "$pid" "$1" "$2"

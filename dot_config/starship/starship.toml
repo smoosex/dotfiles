@@ -1,26 +1,26 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[░▒▓](#c0d6e4)\
+[░▒▓](#b2d6d1)\
 $os\
-[](bg:#69c3ff fg:#c0d6e4)\
+[](bg:#7fbbb3 fg:#b2d6d1)\
 $directory\
-[](fg:#69c3ff bg:#375977)\
+[](fg:#7fbbb3 bg:#496063)\
 $git_branch\
 $git_status\
-[](fg:#375977 bg:#19202e)\
+[](fg:#496063 bg:#272e33)\
 $nodejs\
 $bun\
 $rust\
 $golang\
 $php\
-[](fg:#19202e bg:#151b26)\
+[](fg:#272e33 bg:#20262b)\
 $time\
-[ ](fg:#151b26)\
+[ ](fg:#20262b)\
 \n$character"""
 
 [directory]
-style = "fg:#264e69 bg:#69c3ff"
+style = "fg:#2e4844 bg:#7fbbb3"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -33,46 +33,46 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#375977"
-format = '[[ $symbol $branch ](fg:#69c3ff bg:#375977)]($style)'
+style = "bg:#496063"
+format = '[[ $symbol $branch ](fg:#96c4be bg:#496063)]($style)'
 
 [git_status]
-style = "bg:#375977"
-format = '[[($all_status$ahead_behind )](fg:#69c3ff bg:#375977)]($style)'
+style = "bg:#496063"
+format = '[[($all_status$ahead_behind )](fg:#96c4be bg:#496063)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#19202e"
-format = '[[ $symbol ($version) ](fg:#69c3ff bg:#19202e)]($style)'
+style = "bg:#272e33"
+format = '[[ $symbol ($version) ](fg:#7fbbb3 bg:#272e33)]($style)'
 
 [bun]
 symbol = ""
-style = "bg:#19202e"
-format = '[[ $symbol ($version) ](fg:#69c3ff bg:#19202e)]($style)'
+style = "bg:#272e33"
+format = '[[ $symbol ($version) ](fg:#7fbbb3 bg:#272e33)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#19202e"
-format = '[[ $symbol ($version) ](fg:#69c3ff bg:#19202e)]($style)'
+style = "bg:#272e33"
+format = '[[ $symbol ($version) ](fg:#7fbbb3 bg:#272e33)]($style)'
 
 [golang]
 symbol = ""
-style = "bg:#19202e"
-format = '[[ $symbol ($version) ](fg:#69c3ff bg:#19202e)]($style)'
+style = "bg:#272e33"
+format = '[[ $symbol ($version) ](fg:#7fbbb3 bg:#272e33)]($style)'
 
 [php]
 symbol = ""
-style = "bg:#19202e"
-format = '[[ $symbol ($version) ](fg:#69c3ff bg:#19202e)]($style)'
+style = "bg:#272e33"
+format = '[[ $symbol ($version) ](fg:#7fbbb3 bg:#272e33)]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#151b26"
-format = '[[  $time ](fg:#69c3ff bg:#151b26)]($style)'
+style = "bg:#20262b"
+format = '[[  $time ](fg:#7fbbb3 bg:#20262b)]($style)'
 
 [os]
-style = "bg:#c0d6e4 fg:#383f44"
+style = "bg:#b2d6d1 fg:#313d3c"
 format = "[ $symbol ]($style)"
 disabled = false
 

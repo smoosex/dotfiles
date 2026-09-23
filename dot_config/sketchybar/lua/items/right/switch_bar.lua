@@ -11,7 +11,7 @@ local switch_bar = Sbar.add("item", "switch_bar", {
 	position = "right",
 	icon = {
 		string = icons.switch_bar,
-    color = colors.theme.c6,
+		color = colors.theme.c6,
 	},
 	label = {
 		drawing = false,
@@ -23,10 +23,7 @@ switch_bar:subscribe("mouse.clicked", function()
 	sw_bar_position.switch_sketchybar_bar_position(current_bar_position)
 	sw_bar_position.switch_yabai_bar_position(current_bar_position)
 	-- os.execute("chezmoi apply --force && aerospace reload-config && sketchybar --reload")
-	Sbar.exec(
-		'chezmoi apply --force "$HOME/.config/sketchybar/lua/bar_position.lua"'
-			.. ' && launchctl kickstart -k "gui/$(id -u)/sh.brew.sketchybar"'
-	)
+	Sbar.exec("chezmoi apply --force && sketchybar --reload")
 end)
 switch_bar:subscribe("mouse.entered", function()
 	animations.base_hover_animation(switch_bar)

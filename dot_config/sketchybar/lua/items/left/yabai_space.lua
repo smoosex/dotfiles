@@ -59,8 +59,7 @@ local sync_spaces = function()
 				goto continue
 			end
 
-			local label = ws.label or "space"
-			local ws_name = label .. "-" .. tostring(ws.index)
+			local ws_name = "yabai_space." .. tostring(ws.index)
 			local space = spaces[ws_name]
 
 			if space == nil then

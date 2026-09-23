@@ -15,8 +15,8 @@ sudo yabai --load-sa
 yabai -m config \
   external_bar all:30:0 \
   menubar_opacity 1.0 \
-  mouse_follows_focus true \
-  focus_follows_mouse false \
+  mouse_follows_focus on \
+  focus_follows_mouse off \
   display_arrangement_order default \
   window_origin_display focused \
   window_placement second_child \
@@ -32,7 +32,7 @@ yabai -m config \
   insert_feedback_color 0xff000000 \
   split_ratio 0.50 \
   split_type auto \
-  auto_balance true \
+  auto_balance on \
   top_padding 08 \
   bottom_padding 08 \
   left_padding 08 \
@@ -90,7 +90,6 @@ yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Selec
 yabai -m rule --add app="Parallels Desktop" title="(Configuration|Control Center|Preferences)$" manage=off sub-layer=below
 yabai -m rule --add app="WeChat" title!="^Weixin$" manage=off sub-layer=below
 yabai -m rule --add app="QQ" title!="'QQ" manage=off sub-layer=below
-yabia -m rule --add app="^(MuMu Android Device|MuMuPlayer Pro)$" manage=off sub-layer=below
 yabai -m rule --add app="ChatGPT" manage=off sub-layer=below
 yabai -m rule --add app="Antigravity" title="Settings" manage=off sub-layer=below
 yabai -m rule --add app="CC Switch" manage=off sub-layer=below
