@@ -54,12 +54,33 @@ local sync_spaces = function()
 			return
 		end
 
+		local focused_display
+		for _, ws in ipairs(result) do
+			if type(ws) == "table" and ws["has-focus"] then
+				focused_display = ws.display
+				break
+			end
+		end
+
+		if focused_display == nil then
+			return
+		end
+
 		for _, ws in ipairs(result) do
 			if type(ws) ~= "table" or ws.index == nil then
 				goto continue
 			end
 
 			local ws_name = "yabai_space." .. tostring(ws.index)
+
+			if ws.display ~= focused_display then
+				if spaces[ws_name] ~= nil then
+					Sbar.remove(ws_name)
+					spaces[ws_name] = nil
+				end
+				goto continue
+			end
+
 			local space = spaces[ws_name]
 
 			if space == nil then
