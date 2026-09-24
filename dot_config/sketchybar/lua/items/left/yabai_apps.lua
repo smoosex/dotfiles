@@ -7,7 +7,7 @@ local apps = {}
 local draw_apps = function()
 	Sbar.exec("sleep 0.02s && yabai -m query --windows --space", function(result, _)
 		for _, w in ipairs(result) do
-			if w["is-visible"] then
+			if w["is-visible"] and not w["is-sticky"] then
 				local unique_id = "app-" .. tostring(w.id)
 				local is_focused = w["has-focus"]
 				local app = Sbar.add("item", unique_id, {
@@ -55,7 +55,7 @@ local handle_apps_change = function()
 
 		-- 1. 遍历新数据：更新旧的，添加新的
 		for _, w in ipairs(windows) do
-			if w["is-visible"] then
+			if w["is-visible"] and not w["is-sticky"] then
 				local unique_id = "app-" .. tostring(w.id)
 				local is_focused = w["has-focus"]
 
