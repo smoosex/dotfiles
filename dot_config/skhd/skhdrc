@@ -2,15 +2,15 @@
 # │                   Windows Navigation                     │
 # ╰──────────────────────────────────────────────────────────╯
 # Window Navigation (through space and display) 
-hyper - h : yabai -m window --focus west || yabai -m space --focus previous || yabai -m display --focus west
+hyper - h : yabai -m window --focus west || yabai -m space --focus prev || yabai -m display --focus west
 hyper - j : yabai -m window --focus south || yabai -m display --focus south
 hyper - k : yabai -m window --focus north || yabai -m display --focus north
 hyper - l : yabai -m window --focus east || yabai -m space --focus next || yabai -m display --focus east
 
 # Space Navigation
 hyper - 0x29 : yabai -m space --focus recent # Focus the last space
-hyper - 0x21 : skhd -k "ctrl - left"
-hyper - 0x1E : skhd -k "ctrl - right"
+hyper - 0x21 : yabai -m space --focus prev
+hyper - 0x1E : yabai -m space --focus next
 hyper - u : yabai -m space --focus 1
 hyper - i : yabai -m space --focus 2
 hyper - o : yabai -m space --focus 3
