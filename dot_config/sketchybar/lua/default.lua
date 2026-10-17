@@ -27,7 +27,7 @@ Sbar.default({
 	background = {
 		height = settings.item_height,
 		color = colors.theme.c2,
-		corner_radius = 6,
+		corner_radius = 12,
 		shadow = {
       drawing = true,
 			distance = 4,
@@ -38,7 +38,7 @@ Sbar.default({
 	popup = {
 		background = {
 			border_width = 1,
-			corner_radius = 6,
+			corner_radius = 12,
 			border_color = colors.theme.c3,
 			color = colors.theme.bg,
 			shadow = { drawing = false },

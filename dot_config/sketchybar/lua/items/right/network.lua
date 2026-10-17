@@ -3,7 +3,7 @@ local icons = require("icons")
 local settings = require("settings")
 
 Sbar.exec(
-	"killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0"
+	"killall network_load 2>/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0 >/dev/null 2>&1 &"
 )
 
 local rate_font = {

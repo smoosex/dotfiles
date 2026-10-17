@@ -22,7 +22,7 @@ local function add_background(side, first, last)
 			drawing = true,
 			color = colors.theme.bg,
 			height = settings.bar_height,
-			corner_radius = 8,
+			corner_radius = 12,
 			shadow = { drawing = false },
 		},
 	})

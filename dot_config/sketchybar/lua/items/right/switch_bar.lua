@@ -21,9 +21,9 @@ local switch_bar = Sbar.add("item", "switch_bar", {
 switch_bar:subscribe("mouse.clicked", function()
 	animations.base_click_animation(switch_bar)
 	sw_bar_position.switch_sketchybar_bar_position(current_bar_position)
-	sw_bar_position.switch_yabai_bar_position(current_bar_position)
-	-- os.execute("chezmoi apply --force && aerospace reload-config && sketchybar --reload")
-	Sbar.exec("chezmoi apply --force && sketchybar --reload")
+	sw_bar_position.switch_rift_bar_position(current_bar_position)
+	Sbar.exec("chezmoi apply ~/.config/sketchybar/lua/bar_position.lua ~/.config/rift/config.toml"
+		.. " && rift-cli execute config reload && sketchybar --reload")
 end)
 switch_bar:subscribe("mouse.entered", function()
 	animations.base_hover_animation(switch_bar)

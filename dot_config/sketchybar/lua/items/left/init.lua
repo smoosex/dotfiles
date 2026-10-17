@@ -10,9 +10,6 @@ Sbar.add("item", "logo.padding.left", {
 	background = { drawing = false },
 })
 
--- require("items.left.aerospace_sapce")
-require("items.left.yabai_space")
-
 Sbar.add("item", "space.padding.left", {
 	position = "left",
 	width = settings.group_paddings,
@@ -21,5 +18,4 @@ Sbar.add("item", "space.padding.left", {
 	background = { drawing = false },
 })
 
--- require("items.left.asrospace_apps")
-require("items.left.yabai_apps")
+require("items.left.rift")

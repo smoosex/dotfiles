@@ -1,0 +1,143 @@
+[settings]
+default_disable = false
+animate = true
+animation_duration = 0.3
+hot_reload = true
+focus_follows_mouse = false
+mouse_follows_focus = false
+mouse_hides_on_focus = false
+run_on_start = [
+    "/opt/homebrew/bin/rift-cli subscribe cli --event workspace_changed --command /bin/sh --args -c --args '/opt/homebrew/bin/sketchybar --trigger rift_update'",
+    "/opt/homebrew/bin/rift-cli subscribe cli --event windows_changed --command /bin/sh --args -c --args '/opt/homebrew/bin/sketchybar --trigger rift_update'",
+    "/opt/homebrew/bin/rift-cli subscribe cli --event focused_window_changed --command /bin/sh --args -c --args '/opt/homebrew/bin/sketchybar --trigger rift_update'",
+]
+
+[settings.layout]
+mode = "master_stack"
+window_insertion_point = "next_to_selection"
+
+# Rift already excludes the 32pt menu bar: 34pt bar bottom + 8pt gap - 32pt.
+[settings.layout.gaps.outer]
+top = 10
+bottom = 8
+left = 8
+right = 8
+
+[settings.layout.gaps.inner]
+horizontal = 10
+vertical = 10
+
+[settings.ui.mission_control]
+enabled = false
+show_empty_workspaces = true
+
+[settings.ui.menu_bar]
+enabled = false
+mode = "active"
+display_style = "label"
+active_label = "index"
+show_empty = false
+
+[settings.drag_drop]
+modifier = "alt"
+action1 = "move"
+drop_action = "swap"
+
+[virtual_workspaces]
+enabled = true
+default_workspace_count = 9
+auto_assign_windows = true
+preserve_focus_per_workspace = true
+workspace_auto_back_and_forth = false
+prevent_wrapping = true
+workspace_names = ["terminal", "browser", "communication", "video", "nsfw", "6", "7", "8", "9"]
+app_rules = [
+    { app_name = "Ghostty", workspace = "terminal", focus = true },
+    { app_name = "Alacritty", workspace = "terminal", focus = true },
+    { app_name = "WezTerm", workspace = "terminal", focus = true },
+    { app_name = "kitty", workspace = "terminal", focus = true },
+    { app_name = "Terminal", workspace = "terminal", focus = true },
+    { app_name = "Safari", workspace = "browser", focus = true },
+    { app_name = "Google Chrome", workspace = "browser", focus = true },
+    { app_name = "Firefox", workspace = "browser", focus = true },
+    { app_name = "Zen", workspace = "browser", focus = true },
+    { app_name = "Brave", workspace = "browser", focus = true },
+    { app_name = "Mail", workspace = "communication", focus = true },
+    { app_name = "WeChat", workspace = "communication", focus = true },
+    { app_name = "Feishu", workspace = "communication", focus = true },
+    { app_name = "Discord", workspace = "communication", focus = true },
+    { app_name = "QQ", workspace = "communication", focus = true },
+    { app_id = "com.apple.finder", floating = true },
+    { app_name = "System Settings", floating = true },
+    { app_name = "Calculator", floating = true },
+    { app_name = "Activity Monitor", floating = true },
+    { app_name = "Raycast", floating = true },
+    { app_name = "Alfred", floating = true },
+    { app_name = "Preview", floating = true },
+    { app_name = "Music", floating = true },
+    { app_name = "Claude", floating = true },
+    { app_name = "ChatGPT", floating = true },
+    { app_name = "CC Switch", floating = true },
+    { app_name = "Gemini", floating = true },
+]
+
+[modifier_combinations]
+hyper = "Ctrl + Alt + Shift + Meta"
+meh = "Ctrl + Alt + Shift"
+
+[keys]
+"hyper + H" = { move_focus = "left" }
+"hyper + J" = { move_focus = "down" }
+"hyper + K" = { move_focus = "up" }
+"hyper + L" = { move_focus = "right" }
+"hyper + M" = "promote_to_master"
+"hyper + C" = "center_selection"
+"hyper + W" = "switch_preset_column_width"
+
+# skhd keycodes 0x29 / 0x21 / 0x1e are semicolon / left bracket / right bracket.
+"hyper + Semicolon" = "switch_to_last_workspace"
+"hyper + BracketLeft" = { prev_workspace = false }
+"hyper + BracketRight" = { next_workspace = false }
+"hyper + U" = { switch_to_workspace = 0 }
+"hyper + I" = { switch_to_workspace = 1 }
+"hyper + O" = { switch_to_workspace = 2 }
+"hyper + P" = { switch_to_workspace = 3 }
+"hyper + 5" = { switch_to_workspace = 4 }
+"hyper + 6" = { switch_to_workspace = 5 }
+"hyper + 7" = { switch_to_workspace = 6 }
+"hyper + 8" = { switch_to_workspace = 7 }
+"hyper + 9" = { switch_to_workspace = 8 }
+
+# Rift moves tree nodes rather than performing yabai's directional swaps.
+"Ctrl + Shift + H" = { move_node = "left" }
+"Ctrl + Shift + J" = { move_node = "down" }
+"Ctrl + Shift + K" = { move_node = "up" }
+"Ctrl + Shift + L" = { move_node = "right" }
+
+"Alt + Shift + U" = { move_window_to_workspace = { workspace = 0, follow = true } }
+"Alt + Shift + I" = { move_window_to_workspace = { workspace = 1, follow = true } }
+"Alt + Shift + O" = { move_window_to_workspace = { workspace = 2, follow = true } }
+"Alt + Shift + P" = { move_window_to_workspace = { workspace = 3, follow = true } }
+"Alt + Shift + 5" = { move_window_to_workspace = { workspace = 4, follow = true } }
+"Alt + Shift + 6" = { move_window_to_workspace = { workspace = 5, follow = true } }
+"Alt + Shift + 7" = { move_window_to_workspace = { workspace = 6, follow = true } }
+"Alt + Shift + 8" = { move_window_to_workspace = { workspace = 7, follow = true } }
+"Alt + Shift + 9" = { move_window_to_workspace = { workspace = 8, follow = true } }
+
+"Ctrl + Shift + B" = { set_workspace_layout = { mode = "bsp" } }
+"Ctrl + Shift + F" = { set_workspace_layout = { mode = "floating" } }
+"Ctrl + Shift + S" = { set_workspace_layout = { mode = "scrolling" } }
+"Ctrl + Shift + M" = { set_workspace_layout = { mode = "master_stack" } }
+
+# Rift resizes by roughly 5%, not yabai's fixed 100 pixels.
+"meh + H" = { resize_window_shrink = "horizontal" }
+"meh + J" = { resize_window_grow = "vertical" }
+"meh + K" = { resize_window_shrink = "vertical" }
+"meh + L" = { resize_window_grow = "horizontal" }
+"hyper + Enter" = "toggle_fullscreen_within_gaps"
+"Alt + Space" = "toggle_window_floating"
+"Meta + Shift + C" = "create_workspace"
+
+# Keep an explicit activation switch and a manual reload shortcut.
+"Alt + Z" = "toggle_space_activated"
+"hyper + R" = "reload_config"
