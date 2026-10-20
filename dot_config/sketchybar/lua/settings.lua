@@ -2,10 +2,12 @@ local bar_position = require("bar_position")
 local utils = require("utils")
 
 local common_settings = {
-	paddings = 4,
-	group_paddings = 4,
-	bar_height = 30,
-	item_height = 22,
+	paddings = 3,
+	group_paddings = 3,
+	bar_height = 26,
+	item_height = 18,
+	bar_corner_radius = 10,
+	item_corner_radius = 9,
 
 	base_animation = "sin",
 	base_animation_duration = 8,
@@ -17,7 +19,7 @@ local common_settings = {
 	font = {
 		text = "Maple Mono NF CN", -- Used for text
 		numbers = "Maple Mono NF CN", -- Used for numbers
-		size = 14.0,
+		size = 12.0,
 		style_map = {
 			["Regular"] = "Regular",
 			["Semibold"] = "Medium",
@@ -29,9 +31,6 @@ local common_settings = {
 }
 
 local top_bar_settings_addon = {
-  bar_height = 30,
-	item_height = 22,
-
 	notch = true,
 
 	bar_position = "top",
@@ -44,9 +43,6 @@ local top_bar_settings_addon = {
 }
 
 local bottom_bar_settings_addon = {
-  bar_height = 30,
-	item_height = 22,
-
 	bar_position = "bottom",
 	bar_margin = 200,
 	bar_y_offset = 2,

@@ -38,13 +38,19 @@ M.switch_rift_bar_position = function(bar_position)
 	local content = file:read("*a")
 	file:close()
 
-	local top = bar_position == "top" and 8 or 10
-	local bottom = bar_position == "top" and 40 or 8
+	local settings = require("settings")
+	local top = bar_position == "top" and 8 or (4 + settings.bar_height + 6)
+	local bottom = bar_position == "top" and (2 + settings.bar_height + 8) or 8
 	local replaced, count = content:gsub("(%[settings%.layout%.gaps%.outer%]%s*\n)(.-)(\n%[)", function(header, gaps, next_table)
 		gaps = gaps:gsub("top = %d+", "top = " .. top):gsub("bottom = %d+", "bottom = " .. bottom)
 		return header .. gaps .. next_table
 	end, 1)
 	assert(count == 1, "找不到 Rift 外边距配置")
+	-- Display-specific values are recalculated after SketchyBar reloads.
+	replaced = replaced:gsub('(%[settings%.layout%.gaps%.per_display%."[^"]+"%.outer%]%s*\n)(.-)(\n%[)', function(header, gaps, next_table)
+		gaps = gaps:gsub("top = %d+", "top = " .. top):gsub("bottom = %d+", "bottom = " .. bottom)
+		return header .. gaps .. next_table
+	end)
 	file = assert(io.open(filename, "w"))
 	file:write(replaced)
 	file:close()

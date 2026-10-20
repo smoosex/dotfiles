@@ -9,7 +9,7 @@ Sbar.exec("killall cpu_load 2>/dev/null; $CONFIG_DIR/helpers/event_providers/cpu
 
 Sbar.add("item", "cpu.padding.right", {
 	position = "right",
-	width = settings.group_paddings,
+	width = 2 * settings.group_paddings,
 	icon = { drawing = false },
 	label = { drawing = false },
 	background = { drawing = false },
@@ -22,10 +22,10 @@ local cpu_label = Sbar.add("item", "cpu.label", {
 	label = {
 		string = "󱗼󱗼󱗼 %",
 		font = {
-			size = 12.0,
+			size = settings.font.size - 1,
 		},
 	},
-	width = 54,
+	width = 48,
 	background = { drawing = false },
 })
 

@@ -10,7 +10,7 @@ local bar_properties = {
 	padding_left = 0,
 	margin = settings.bar_margin,
 	y_offset = settings.bar_y_offset,
-	corner_radius = 12,
+	corner_radius = settings.bar_corner_radius,
 	topmost = "window",
 }
 

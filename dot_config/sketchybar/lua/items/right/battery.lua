@@ -15,11 +15,7 @@ local battery = Sbar.add("item", "battery", {
 	popup = { align = "center" },
 	padding_left = 0,
 	padding_right = 0,
-	background = {
-		shadow = {
-			drawing = false,
-		},
-	},
+	background = { drawing = false },
 })
 
 local battery_percentage = Sbar.add("item", {

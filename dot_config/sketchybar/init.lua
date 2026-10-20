@@ -19,6 +19,7 @@ Sbar.hotload(false)
 require("bar")
 require("default")
 require("items")
+require("display_layout")
 Sbar.end_config()
 
 -- Run the event loop of the sketchybar module (without this there will be no

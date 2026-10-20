@@ -13,11 +13,7 @@ local wifi = Sbar.add("item", "wifi", {
 	label = { drawing = false },
 	padding_right = 0,
 	padding_left = 0,
-	background = {
-		shadow = {
-			drawing = false,
-		},
-	},
+	background = { drawing = false },
 })
 
 local ip = Sbar.add("item", {

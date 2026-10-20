@@ -27,7 +27,7 @@ Sbar.default({
 	background = {
 		height = settings.item_height,
 		color = colors.theme.c2,
-		corner_radius = 12,
+		corner_radius = settings.item_corner_radius,
 		shadow = {
       drawing = true,
 			distance = 4,

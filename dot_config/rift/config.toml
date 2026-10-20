@@ -16,9 +16,9 @@ run_on_start = [
 mode = "master_stack"
 window_insertion_point = "next_to_selection"
 
-# Rift already excludes the 32pt menu bar: 34pt bar bottom + 8pt gap - 32pt.
+# Reserve the full bar footprint by default; SketchyBar synchronizes per-display insets.
 [settings.layout.gaps.outer]
-top = 10
+top = 36
 bottom = 8
 left = 8
 right = 8
@@ -26,6 +26,13 @@ right = 8
 [settings.layout.gaps.inner]
 horizontal = 10
 vertical = 10
+
+# This display already reserves 32pt above Rift’s usable frame.
+[settings.layout.gaps.per_display."37D8832A-2D66-02CA-B9F7-8F30A301B230".outer]
+top = 4
+bottom = 8
+left = 8
+right = 8
 
 [settings.ui.mission_control]
 enabled = false
@@ -68,6 +75,9 @@ app_rules = [
     { app_name = "Discord", workspace = "communication", focus = true },
     { app_name = "QQ", workspace = "communication", focus = true },
     { app_id = "com.apple.finder", floating = true },
+    { app_id = "com.netease.mumu.nemux", floating = true },
+    { app_id = "com.netease.mumu.nemux.emulator", floating = true },
+    { app_id = "com.yetone.magpie", floating = true },
     { app_name = "System Settings", floating = true },
     { app_name = "Calculator", floating = true },
     { app_name = "Activity Monitor", floating = true },
@@ -135,7 +145,7 @@ meh = "Ctrl + Alt + Shift"
 "meh + K" = { resize_window_shrink = "vertical" }
 "meh + L" = { resize_window_grow = "horizontal" }
 "hyper + Enter" = "toggle_fullscreen_within_gaps"
-"Alt + Space" = "toggle_window_floating"
+"Alt + Space" = { toggle_window_floating = { center = true, size = "smart" } }
 "Meta + Shift + C" = "create_workspace"
 
 # Keep an explicit activation switch and a manual reload shortcut.

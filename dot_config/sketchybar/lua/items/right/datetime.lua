@@ -11,7 +11,7 @@ local dt = Sbar.add("item", "datetime", {
 		align = "right",
 		font = {
 			family = settings.font.text,
-			size = 12.0,
+			size = settings.font.size - 1,
 		},
 	},
 	position = settings.calendar_position,
@@ -28,7 +28,7 @@ end)
 
 Sbar.add("item", "bracket.battery.volume.wifi.padding.right", {
 	position = "right",
-	width = settings.group_paddings,
+	width = 2 * settings.group_paddings,
 	icon = { drawing = false },
 	label = { drawing = false },
 	background = { drawing = false },
