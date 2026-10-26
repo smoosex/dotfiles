@@ -1,0 +1,51 @@
+#!/bin/bash
+set -euo pipefail
+
+state_dir="$HOME/.local/state/matheme"
+mkdir -p "$state_dir"
+mode=solid
+if [[ -f "$state_dir/material" ]]; then
+  read -r mode < "$state_dir/material"
+fi
+case "${1:-toggle}" in
+  toggle) if [[ "$mode" == glass ]]; then mode=solid; else mode=glass; fi ;;
+  solid|glass) mode="$1" ;;
+  --init) ;;
+  *) echo 'Usage: matheme-material [toggle|solid|glass|--init]' >&2; exit 1 ;;
+esac
+
+opacity=1.0
+blur=0
+alacritty_blur=false
+if [[ "$mode" == glass ]]; then
+  opacity=0.85
+  blur=20
+  alacritty_blur=true
+fi
+
+cat > "$state_dir/kitty.conf.tmp" <<EOF
+background_opacity $opacity
+background_blur $blur
+EOF
+cat > "$state_dir/ghostty.conf.tmp" <<EOF
+background-opacity = $opacity
+background-blur = $blur
+EOF
+cat > "$state_dir/alacritty.toml.tmp" <<EOF
+[window]
+opacity = $opacity
+blur = $alacritty_blur
+EOF
+for file in kitty.conf ghostty.conf alacritty.toml; do
+  mv "$state_dir/$file.tmp" "$state_dir/$file"
+done
+printf '%s\n' "$mode" > "$state_dir/material.tmp"
+mv "$state_dir/material.tmp" "$state_dir/material"
+
+if [[ "${1:-toggle}" != --init ]]; then
+  pkill -USR1 -x kitty || true
+  # Alacritty watches its main configuration as well as imported files.
+  [[ ! -f "$HOME/.config/alacritty/alacritty.toml" ]] || touch "$HOME/.config/alacritty/alacritty.toml"
+  sketchybar --reload
+fi
+printf '%s\n' "$mode"

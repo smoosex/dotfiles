@@ -5,6 +5,9 @@ local animations = require("animations")
 
 local logo = Sbar.add("item", "logo", {
 	icon = {
+		width = settings.item_height,
+		padding_left = 0,
+		padding_right = 0,
 		string = icons.arch,
 		color = colors.theme.c10,
 		y_offset = 1,
@@ -15,11 +18,15 @@ local logo = Sbar.add("item", "logo", {
 	},
 	label = { drawing = false },
 	background = {
+		padding_left = 0,
+		padding_right = 0,
 		color = colors.theme.c2,
 	},
 	padding_left = settings.group_paddings,
 	click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0",
 })
+
+logo:set({ padding_left = settings.group_paddings, padding_right = settings.group_paddings })
 
 logo:subscribe("mouse.clicked", function()
 	animations.base_click_animation(logo)

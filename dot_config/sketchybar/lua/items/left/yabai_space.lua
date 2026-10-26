@@ -20,7 +20,10 @@ local create_space = function(ws, ws_name)
 		label = { drawing = false },
 		background = {
 			color = colors.transparent,
+			border_width = 0,
 			shadow = {
+				color = colors.transparent,
+				distance = 0,
 				drawing = false,
 			},
 		},

@@ -11,7 +11,7 @@ Sbar.add("bracket", "bracket.battery.volume.wifi", {
 	volume.name,
 	wifi.name,
 }, {
-	background = { color = colors.theme.c2 },
+	background = { color = colors.surface.c2 },
 })
 
 Sbar.add("item", "bracket.battery.volume.wifi.padding.left", {
@@ -26,5 +26,6 @@ require("items.right.cpu")
 require("items.right.network")
 require("items.right.input_source")
 require("items.right.matheme")
+require("items.right.material")
 require("items.right.switch_bar")
 -- require("items.right.tmux")

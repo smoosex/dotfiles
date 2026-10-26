@@ -1,5 +1,12 @@
 require("nvchad.autocmds")
 
+vim.api.nvim_create_autocmd("VimEnter", {
+	once = true,
+	callback = function()
+		require("utils.material").setup()
+	end,
+})
+
 -- autosave BEGIN
 local create_cmd = vim.api.nvim_create_user_command
 

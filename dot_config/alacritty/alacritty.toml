@@ -2,6 +2,7 @@
 import = [
     "~/.config/alacritty/theme.toml",
     "~/.config/alacritty/mappings.toml",
+    "~/.local/state/matheme/alacritty.toml",
 ]
 
 [env]
@@ -9,7 +10,6 @@ TERM = "xterm-256color"
 
 [window]
 decorations = "Buttonless"
-opacity = 1.0
 option_as_alt = "OnlyLeft"
 padding = { x = 0, y = 0 }
 dynamic_padding = true

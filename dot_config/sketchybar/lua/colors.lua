@@ -1,4 +1,9 @@
 local theme = require("helpers.theme.palette")
+local material = require("material")
+local surface = {}
+for name, color in pairs(theme) do
+	surface[name] = material.background(color)
+end
 
 return {
 	black = 0xff181819,
@@ -13,6 +18,7 @@ return {
 	transparent = 0x00000000,
 
 	theme = theme,
+	surface = surface,
 
 	arch_blue = 0xff1793d1,
 

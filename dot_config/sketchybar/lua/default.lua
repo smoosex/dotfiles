@@ -1,5 +1,6 @@
 local settings = require("settings")
 local colors = require("colors")
+local material = require("material")
 
 Sbar.default({
 	updates = "when_shown",
@@ -26,21 +27,23 @@ Sbar.default({
 	},
 	background = {
 		height = settings.item_height,
-		color = colors.theme.c2,
+		color = colors.surface.c2,
 		corner_radius = settings.item_corner_radius,
+		border_width = material.glass and 1 or 0,
+		border_color = material.glass and 0x73ffffff or colors.transparent,
 		shadow = {
-      drawing = true,
-			distance = 4,
-      color = colors.theme.c3,
-      angle = 33,
+			drawing = material.glass,
+			distance = material.glass and 1 or 0,
+			color = material.glass and 0x1f000000 or colors.transparent,
+			angle = material.glass and 90 or 33,
 		},
 	},
 	popup = {
 		background = {
 			border_width = 1,
-			corner_radius = 12,
+			corner_radius = 16,
 			border_color = colors.theme.c3,
-			color = colors.theme.bg,
+			color = colors.surface.bg,
 			shadow = { drawing = false },
 		},
 		blur_radius = 50,

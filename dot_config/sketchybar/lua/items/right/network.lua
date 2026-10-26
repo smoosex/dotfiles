@@ -14,7 +14,7 @@ local rate_font = {
 
 Sbar.add("item", "network.padding.right", {
 	position = "right",
-	width = 2 * settings.group_paddings,
+	width = settings.group_paddings,
 	icon = { drawing = false },
 	label = { drawing = false },
 	background = { drawing = false },
@@ -62,12 +62,16 @@ local net_up_down_icon = Sbar.add("item", "network.up_down", {
 	padding_right = 0,
 	icon = {
 		string = icons.wifi.up_down,
+		width = settings.item_height,
+		align = "center",
+		padding_left = 0,
+		padding_right = 0,
 		color = colors.theme.c8,
 	},
 	label = { drawing = false },
-	background = { color = colors.theme.c1, shadow = {
-		distance = 3,
-		angle = 0,
+	background = { color = colors.surface.c1, shadow = {
+		distance = require("material").glass and 1 or 0,
+		angle = require("material").glass and 90 or 0,
 	} },
 })
 
@@ -77,7 +81,7 @@ Sbar.add("bracket", "bracket.network", {
 	net_down.name,
 }, {
 	background = {
-		color = colors.theme.c2,
+		color = colors.surface.c2,
 	},
 })
 

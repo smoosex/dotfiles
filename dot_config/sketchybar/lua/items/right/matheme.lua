@@ -11,12 +11,19 @@ local pop_items = {} -- 存放 popup 子项的引用
 
 local matheme = Sbar.add("item", "matheme", {
 	position = "right",
+	background = { padding_left = 0, padding_right = 0 },
 	icon = {
+		width = settings.item_height,
+		align = "center",
+		padding_left = 0,
+		padding_right = 0,
 		string = icons.palette,
 		color = colors.theme.c6,
 	},
 	label = { drawing = false },
 })
+
+matheme:set({ padding_left = settings.group_paddings, padding_right = settings.group_paddings })
 
 local function toggle_theme_picker()
 	animations.base_click_animation(matheme)
@@ -26,13 +33,13 @@ end
 
 local function on_hover_theme_picker()
 	Sbar.animate(settings.base_animation, settings.base_animation_duration, function()
-		matheme:set({ icon = { color = colors.theme.c0 }, background = { color = colors.theme.c9 } })
+		matheme:set({ icon = { color = colors.theme.c0 }, background = { color = colors.surface.c9 } })
 	end)
 end
 
 local function on_hover_leave_theme_picker()
 	Sbar.animate(settings.base_animation, settings.base_animation_duration, function()
-		matheme:set({ icon = { color = colors.theme.c6 }, background = { color = colors.theme.c2 } })
+		matheme:set({ icon = { color = colors.theme.c6 }, background = { color = colors.surface.c2 } })
 	end)
 end
 
@@ -48,7 +55,7 @@ end
 local function on_hover_item(env)
 	pop_items[env.NAME]:set({
 		background = {
-			color = colors.theme.c3,
+			color = colors.surface.c3,
 		},
 	})
 end
@@ -76,7 +83,7 @@ for i = 1, #theme_list do
 		scroll_texts = true,
 		width = popup_width,
 		background = {
-			corner_radius = 3,
+			corner_radius = 8,
 			height = 30,
 			drawing = false,
 		},

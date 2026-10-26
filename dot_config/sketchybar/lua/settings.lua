@@ -6,8 +6,8 @@ local common_settings = {
 	group_paddings = 3,
 	bar_height = 30,
 	item_height = 22,
-	bar_corner_radius = 12,
-	item_corner_radius = 12,
+	bar_corner_radius = 16,
+	item_corner_radius = 16,
 
 	base_animation = "sin",
 	base_animation_duration = 8,

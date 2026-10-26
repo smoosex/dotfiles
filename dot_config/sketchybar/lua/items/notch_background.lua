@@ -32,12 +32,14 @@ return function(displays)
 		local function background(name, first, last)
 			local full_name = prefix .. name
 			Sbar.add("bracket", full_name, { prefix .. first, prefix .. last }, {
+				blur_radius = require("material").blur_radius,
 				background = {
 					drawing = true,
-					color = colors.theme.bg,
+					color = colors.surface.bg,
 					height = settings.bar_height,
 					corner_radius = settings.bar_corner_radius,
-					shadow = { drawing = false },
+					border_width = 0,
+					shadow = { drawing = false, color = colors.transparent, distance = 0 },
 				},
 			})
 			names[#names + 1] = full_name

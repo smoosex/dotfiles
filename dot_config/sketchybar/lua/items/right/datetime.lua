@@ -28,7 +28,7 @@ end)
 
 Sbar.add("item", "bracket.battery.volume.wifi.padding.right", {
 	position = "right",
-	width = 2 * settings.group_paddings,
+	width = settings.group_paddings,
 	icon = { drawing = false },
 	label = { drawing = false },
 	background = { drawing = false },

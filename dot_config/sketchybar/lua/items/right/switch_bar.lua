@@ -9,7 +9,12 @@ local current_bar_position = settings.bar_position
 
 local switch_bar = Sbar.add("item", "switch_bar", {
 	position = "right",
+	background = { padding_left = 0, padding_right = 0 },
 	icon = {
+		width = settings.item_height,
+		align = "center",
+		padding_left = 0,
+		padding_right = 0,
 		string = icons.switch_bar,
 		color = colors.theme.c6,
 	},
@@ -17,6 +22,8 @@ local switch_bar = Sbar.add("item", "switch_bar", {
 		drawing = false,
 	},
 })
+
+switch_bar:set({ padding_left = settings.group_paddings, padding_right = settings.group_paddings })
 
 switch_bar:subscribe("mouse.clicked", function()
 	animations.base_click_animation(switch_bar)

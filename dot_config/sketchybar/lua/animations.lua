@@ -1,8 +1,12 @@
 local settings = require("settings")
+local material = require("material")
 
 local M = {}
 
 M.base_click_animation = function(item)
+	if material.glass then
+		return
+	end
 	Sbar.animate(settings.base_animation, settings.base_animation_duration, function()
 		item:set({
 			background = {
@@ -17,7 +21,7 @@ M.base_click_animation = function(item)
 		item:set({
 			background = {
 				shadow = {
-					distance = 4,
+					distance = 0,
 				},
 			},
 			padding_left = 4,
@@ -28,6 +32,9 @@ M.base_click_animation = function(item)
 end
 
 M.base_hover_animation = function(item)
+	if material.glass then
+		return
+	end
 	Sbar.animate(settings.base_animation, settings.base_animation_duration, function()
 		item:set({
 			y_offset = 2,
@@ -36,6 +43,9 @@ M.base_hover_animation = function(item)
 end
 
 M.base_leave_hover_animation = function(item)
+	if material.glass then
+		return
+	end
 	Sbar.animate(settings.base_animation, settings.base_animation_duration, function()
 		item:set({
 			y_offset = 0,

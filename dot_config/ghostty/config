@@ -2,6 +2,7 @@ auto-update-channel = stable
 
 config-file = ./appearances.conf
 config-file = ./mappings.conf
+config-file = ~/.local/state/matheme/ghostty.conf
 
 macos-option-as-alt = true
 desktop-notifications = true

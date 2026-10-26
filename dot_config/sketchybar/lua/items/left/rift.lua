@@ -31,7 +31,11 @@ local function sync(workspaces)
 					},
 				},
 				label = { drawing = false },
-				background = { color = colors.transparent, shadow = { drawing = false } },
+				background = {
+					color = colors.transparent,
+					border_width = 0,
+					shadow = { drawing = false, color = colors.transparent, distance = 0 },
+				},
 				padding_left = 0,
 				padding_right = 0,
 				click_script = cli .. " execute workspace switch " .. workspace.index,

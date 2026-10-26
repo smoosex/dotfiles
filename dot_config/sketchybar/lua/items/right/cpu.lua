@@ -9,7 +9,7 @@ Sbar.exec("killall cpu_load 2>/dev/null; $CONFIG_DIR/helpers/event_providers/cpu
 
 Sbar.add("item", "cpu.padding.right", {
 	position = "right",
-	width = 2 * settings.group_paddings,
+	width = settings.group_paddings,
 	icon = { drawing = false },
 	label = { drawing = false },
 	background = { drawing = false },
@@ -35,14 +35,18 @@ local cpu_icon = Sbar.add("item", "cpu.icon", {
 	padding_right = 0,
 	icon = {
 		string = icons.cpu,
+		width = settings.item_height,
+		align = "center",
+		padding_left = 0,
+		padding_right = 0,
 		color = colors.theme.c8,
 	},
 	label = { drawing = false },
 	background = {
 		color = colors.theme.c1,
 		shadow = {
-			distance = 3,
-			angle = 0,
+			distance = require("material").glass and 1 or 0,
+			angle = require("material").glass and 90 or 0,
 		},
 	},
 })
@@ -51,7 +55,7 @@ local cpu = Sbar.add("bracket", "bracket.cpu", {
 	cpu_icon.name,
 	cpu_label.name,
 }, {
-	background = { color = colors.theme.c2 },
+	background = { color = colors.surface.c2 },
 })
 
 Sbar.add("item", "cpu.padding.left", {
