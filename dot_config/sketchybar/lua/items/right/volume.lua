@@ -11,8 +11,8 @@ local volume_slider = Sbar.add("slider", "volume.slider", 0, {
 	slider = {
 		highlight_color = colors.theme.c9,
 		background = {
-			height = 8,
-			corner_radius = 4,
+			height = 10,
+			corner_radius = 6,
 			color = colors.theme.c4,
 		},
 		knob = {

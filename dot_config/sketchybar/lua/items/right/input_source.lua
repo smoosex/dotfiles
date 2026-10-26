@@ -14,7 +14,7 @@ local input_source_item = Sbar.add("item", "input_source", {
 		font = {
 			family = settings.font.text,
 			style = settings.font.style_map["Bold"],
-			size = settings.font.size + 3,
+			size = settings.font.size + 4,
 		},
 	},
 	label = {

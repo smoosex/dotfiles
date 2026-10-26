@@ -66,5 +66,3 @@ fuck() {
   eval "$(thefuck --alias)"
   fuck "$@"
 }
-
-fastfetch

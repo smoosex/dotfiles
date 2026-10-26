@@ -9,7 +9,7 @@ Sbar.exec(
 local rate_font = {
 	family = settings.font.numbers,
 	style = settings.font.style_map["Bold"],
-	size = 8.0,
+	size = 9.0,
 }
 
 Sbar.add("item", "network.padding.right", {
@@ -29,9 +29,9 @@ local net_up = Sbar.add("item", "network.up", {
 		font = rate_font,
 		string = "󱗼󱗼󱗼 K",
 		color = colors.theme.fg,
-		width = 36,
+		width = 40,
 		padding_left = 0,
-		padding_right = 3,
+		padding_right = 4,
     align = "right",
 	},
 	y_offset = 4,
@@ -42,14 +42,14 @@ local net_down = Sbar.add("item", "network.down", {
 	position = "right",
 	padding_left = 0,
 	padding_right = 0,
-	width = 40,
+	width = 45,
 	label = {
 		font = rate_font,
 		string = "󱗼󱗼󱗼 K",
 		color = colors.theme.fg,
-		width = 36,
+		width = 40,
 		padding_left = 0,
-		padding_right = 3,
+		padding_right = 4,
     align = "right",
 	},
 	y_offset = -4,

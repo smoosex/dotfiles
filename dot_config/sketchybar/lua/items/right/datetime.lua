@@ -11,7 +11,7 @@ local dt = Sbar.add("item", "datetime", {
 		align = "right",
 		font = {
 			family = settings.font.text,
-			size = settings.font.size - 1,
+			size = 12.0,
 		},
 	},
 	position = settings.calendar_position,

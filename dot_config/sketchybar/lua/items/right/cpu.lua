@@ -22,10 +22,10 @@ local cpu_label = Sbar.add("item", "cpu.label", {
 	label = {
 		string = "󱗼󱗼󱗼 %",
 		font = {
-			size = settings.font.size - 1,
+			size = 12.0,
 		},
 	},
-	width = 48,
+	width = 54,
 	background = { drawing = false },
 })
 
