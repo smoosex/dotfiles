@@ -18,18 +18,18 @@ window_insertion_point = "next_to_selection"
 
 # Reserve the full bar footprint by default; SketchyBar synchronizes per-display insets.
 [settings.layout.gaps.outer]
-top = 40
+top = 8
 bottom = 8
 left = 8
 right = 8
 
 [settings.layout.gaps.inner]
-horizontal = 10
-vertical = 10
+horizontal = 8.0
+vertical = 8.0
 
-# This display already reserves 32pt above Rift’s usable frame.
+# 原生菜单栏已由 macOS 排除，不再额外预留 SketchyBar 的 40pt。
 [settings.layout.gaps.per_display."37D8832A-2D66-02CA-B9F7-8F30A301B230".outer]
-top = 40
+top = 8
 bottom = 8
 left = 8
 right = 8
@@ -39,7 +39,7 @@ enabled = false
 show_empty_workspaces = true
 
 [settings.ui.menu_bar]
-enabled = false
+enabled = true
 mode = "active"
 display_style = "label"
 active_label = "index"
@@ -58,37 +58,68 @@ preserve_focus_per_workspace = true
 workspace_auto_back_and_forth = false
 prevent_wrapping = true
 workspace_names = ["terminal", "browser", "communication", "video", "nsfw", "6", "7", "8", "9"]
+# 已安装的应用一律用 app_id 精确匹配；app_name 是子串匹配，容易误伤。
+# 未安装的备用应用（WezTerm/Firefox/Zen/Brave/Alfred/CC Switch/Gemini）保留 app_name。
+# 同 app_id 的多条规则：字段多的优先，平票时靠前的优先 —— 所以例外规则要写在前面。
 app_rules = [
-    { app_name = "Ghostty", workspace = "terminal", focus = true },
-    { app_name = "Alacritty", workspace = "terminal", focus = true },
+    # --- 工作区分配 ---
+    { app_id = "com.mitchellh.ghostty", workspace = "terminal", focus = true },
+    { app_id = "org.alacritty", workspace = "terminal", focus = true },
     { app_name = "WezTerm", workspace = "terminal", focus = true },
-    { app_name = "kitty", workspace = "terminal", focus = true },
-    { app_name = "Terminal", workspace = "terminal", focus = true },
-    { app_name = "Safari", workspace = "browser", focus = true },
-    { app_name = "Google Chrome", workspace = "browser", focus = true },
+    { app_id = "net.kovidgoyal.kitty", workspace = "terminal", focus = true },
+    { app_id = "com.apple.Terminal", workspace = "terminal", focus = true },
+
+    # Safari 的设置窗口浮动，必须排在下面的 browser 规则之前。
+    { app_id = "com.apple.Safari", title_regex = "^(Safari )?(Settings|Preferences|设置|偏好设置)$|^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$", floating = true },
+    { app_id = "com.apple.Safari", workspace = "browser", focus = true },
+    { app_id = "com.google.Chrome", workspace = "browser", focus = true },
     { app_name = "Firefox", workspace = "browser", focus = true },
     { app_name = "Zen", workspace = "browser", focus = true },
     { app_name = "Brave", workspace = "browser", focus = true },
-    { app_name = "Mail", workspace = "communication", focus = true },
-    { app_name = "WeChat", workspace = "communication", focus = true },
-    { app_name = "Feishu", workspace = "communication", focus = true },
-    { app_name = "Discord", workspace = "communication", focus = true },
-    { app_name = "QQ", workspace = "communication", focus = true },
+
+    # 微信 / QQ：主窗口进 communication，其余窗口（小程序、图片查看器）浮动。
+    { app_id = "com.tencent.xinWeChat", title_regex = "^(Weixin|微信)$", workspace = "communication", focus = true },
+    { app_id = "com.tencent.xinWeChat", floating = true },
+    { app_id = "com.tencent.qq", title_regex = "^(QQ|'QQ)$", workspace = "communication", focus = true },
+    { app_id = "com.tencent.qq", floating = true },
+
+    { app_id = "com.apple.mail", workspace = "communication", focus = true },
+    { app_id = "com.electron.lark", workspace = "communication", focus = true },
+    { app_id = "com.hnc.Discord", workspace = "communication", focus = true },
+
+    # --- 系统窗口：Finder、系统设置面板、关于本机 ---
     { app_id = "com.apple.finder", floating = true },
+    { app_id = "com.apple.systempreferences", floating = true },
+    { app_id = "com.apple.SystemProfiler", title_regex = "(About This Mac|关于本机)", floating = true },
+
+    # --- 浮动：不参与平铺，但仍保留在 Rift 的窗口列表里 ---
     { app_id = "com.netease.mumu.nemux", floating = true },
     { app_id = "com.netease.mumu.nemux.emulator", floating = true },
     { app_id = "com.yetone.magpie", floating = true },
-    { app_name = "System Settings", floating = true },
-    { app_name = "Calculator", floating = true },
-    { app_name = "Activity Monitor", floating = true },
-    { app_name = "Raycast", floating = true },
+    { app_id = "com.apple.calculator", floating = true },
+    { app_id = "com.apple.ActivityMonitor", floating = true },
+    { app_id = "com.raycast.macos", floating = true },
     { app_name = "Alfred", floating = true },
-    { app_name = "Preview", floating = true },
-    { app_name = "Music", floating = true },
-    { app_name = "Claude", floating = true },
-    { app_name = "ChatGPT", floating = true },
+    { app_id = "com.apple.Preview", floating = true },
+    { app_id = "com.apple.Music", floating = true },
+    { app_id = "com.anthropic.claudefordesktop", floating = true },
+    { app_id = "com.openai.codex", floating = true },
     { app_name = "CC Switch", floating = true },
     { app_name = "Gemini", floating = true },
+
+    # 从 yabai 的 manage=off 名单里补回的已装应用。
+    { app_id = "com.apple.Dictionary", floating = true },
+    { app_id = "com.apple.PhotoBooth", floating = true },
+    { app_id = "com.apple.AppStore", floating = true },
+    { app_id = "org.pqrs.Karabiner-Elements.Settings", floating = true },
+    { app_id = "org.pqrs.Karabiner-EventViewer", floating = true },
+    { app_id = "com.nssurge.surge-mac", floating = true },
+    { app_id = "com.nssurge.surge-dashboard", floating = true },
+    { app_id = "com.tweety.MediaMate", floating = true },
+    { app_id = "com.electron.pritunl", floating = true },
+    { app_id = "com.crossutility.quantumult-x", floating = true },
+    { app_id = "dev.kdrag0n.MacVirt", floating = true },
+    { app_id = "com.vinz.codenotch", floating = true },
 ]
 
 [modifier_combinations]

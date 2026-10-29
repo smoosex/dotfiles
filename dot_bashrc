@@ -12,5 +12,3 @@ draw_line() {
 }
 
 eval "$(starship init bash)"
-
-# fetch

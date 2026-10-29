@@ -7,3 +7,5 @@
 	insteadOf = http://git.in.yunyisec.com/
 [init]
 	defaultBranch = main
+[core]
+	excludesfile = /Users/smoose/.gitignore_global
