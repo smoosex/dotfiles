@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-    theme = "one_light",
+    theme = "tokyonight",
     transparency = require("utils.material").glass(),
     hl_add = {
         SupermavenRunning = { fg = "#66c13e" },

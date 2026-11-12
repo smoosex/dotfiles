@@ -29,7 +29,7 @@ vertical = 8.0
 
 # 原生菜单栏已由 macOS 排除，不再额外预留 SketchyBar 的 40pt。
 [settings.layout.gaps.per_display."37D8832A-2D66-02CA-B9F7-8F30A301B230".outer]
-top = 8
+top = 4
 bottom = 8
 left = 8
 right = 8
@@ -42,8 +42,9 @@ show_empty_workspaces = true
 enabled = true
 mode = "active"
 display_style = "label"
-active_label = "index"
+active_label = "name"
 show_empty = false
+current_display_only = true
 
 [settings.drag_drop]
 modifier = "alt"
@@ -120,7 +121,10 @@ app_rules = [
     { app_id = "com.crossutility.quantumult-x", floating = true },
     { app_id = "dev.kdrag0n.MacVirt", floating = true },
     { app_id = "com.vinz.codenotch", floating = true },
+    { app_id = "com.superlogical.rex", floating = false, focus = false, workspace = 0 },
+    { app_id = "dev.pig.desktop", floating = false, focus = false, workspace = 3 },
 ]
+mode = "per_display"
 
 [modifier_combinations]
 hyper = "Ctrl + Alt + Shift + Meta"

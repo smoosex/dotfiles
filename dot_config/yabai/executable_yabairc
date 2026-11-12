@@ -13,7 +13,7 @@ sudo yabai --load-sa
 
 # global settings
 yabai -m config \
-  external_bar all:30:0 \
+  external_bar all:0:0 \
   menubar_opacity 1.0 \
   mouse_follows_focus off \
   focus_follows_mouse off \
@@ -33,11 +33,11 @@ yabai -m config \
   split_ratio 0.50 \
   split_type auto \
   auto_balance on \
-  top_padding 08 \
+  top_padding 04 \
   bottom_padding 08 \
   left_padding 08 \
   right_padding 08 \
-  window_gap 10 \
+  window_gap 08 \
   layout bsp \
   mouse_modifier alt \
   mouse_action1 move \
